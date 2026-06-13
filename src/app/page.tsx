@@ -19,7 +19,14 @@ import {
   UserCheck,
   QrCode,
   Search,
-  MessageSquare
+  MessageSquare,
+  Target,
+  Megaphone,
+  Share2,
+  LineChart,
+  Mail,
+  Palette,
+  FileText
 } from "lucide-react";
 
 import Navbar from "@/components/Navbar";
@@ -147,16 +154,16 @@ const processSteps = [
 
 // Tech Stack List
 const techStack = [
-  { name: "React", icon: <Cpu className="w-5 h-5 text-[#6B7280]" /> },
-  { name: "Next.js", icon: <Globe className="w-5 h-5 text-[#6B7280]" /> },
-  { name: "TypeScript", icon: <Code className="w-5 h-5 text-[#6B7280]" /> },
-  { name: "Node.js", icon: <Database className="w-5 h-5 text-[#6B7280]" /> },
-  { name: "Laravel", icon: <Layers className="w-5 h-5 text-[#6B7280]" /> },
-  { name: "MongoDB", icon: <Database className="w-5 h-5 text-[#6B7280]" /> },
-  { name: "MySQL", icon: <Database className="w-5 h-5 text-[#6B7280]" /> },
-  { name: "AWS Services", icon: <Globe className="w-5 h-5 text-[#6B7280]" /> },
-  { name: "Tailwind CSS", icon: <Zap className="w-5 h-5 text-[#6B7280]" /> },
-  { name: "Framer Motion", icon: <Sparkles className="w-5 h-5 text-[#6B7280]" /> }
+  { name: "Meta Ads", icon: <Target className="w-5 h-5 text-[#6B7280]" /> },
+  { name: "Google Ads", icon: <Megaphone className="w-5 h-5 text-[#6B7280]" /> },
+  { name: "SEO & GEO", icon: <Search className="w-5 h-5 text-[#6B7280]" /> },
+  { name: "Social Media", icon: <Share2 className="w-5 h-5 text-[#6B7280]" /> },
+  { name: "Growth Analytics", icon: <LineChart className="w-5 h-5 text-[#6B7280]" /> },
+  { name: "Email Marketing", icon: <Mail className="w-5 h-5 text-[#6B7280]" /> },
+  { name: "CRO & Funnels", icon: <Zap className="w-5 h-5 text-[#6B7280]" /> },
+  { name: "Brand Design", icon: <Palette className="w-5 h-5 text-[#6B7280]" /> },
+  { name: "AI Automation", icon: <Sparkles className="w-5 h-5 text-[#6B7280]" /> },
+  { name: "Content Strategy", icon: <FileText className="w-5 h-5 text-[#6B7280]" /> }
 ];
 
 export default function Home() {
@@ -570,12 +577,12 @@ export default function Home() {
       <section className="py-24 px-6 md:px-12 bg-white relative">
         <div className="max-w-7xl mx-auto space-y-16">
           <div className="text-center max-w-xl mx-auto space-y-4">
-            <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-accent)]">Core Stack</span>
+            <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-accent)]">Growth Stack</span>
             <h2 className="font-sans text-3xl md:text-5xl font-bold tracking-tight text-[#111111]">
-              Technological Blueprint
+              Our Marketing Ecosystem
             </h2>
             <p className="text-[#6B7280] text-sm leading-relaxed">
-              We choose robust, industry-standard infrastructure to ensure maximum security, responsiveness, and speed.
+              We leverage premium marketing platforms, advertising channels, and data analytics engines to maximize your brand reach and drive measurable scaling.
             </p>
           </div>
 
