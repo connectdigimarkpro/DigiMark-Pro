@@ -48,7 +48,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
           {/* Logo */}
           <Link href="/#home" className="flex items-center group transition-transform duration-300 hover:scale-[1.02]">
-            <Logo heightClassName="h-20 md:h-28" />
+            <Logo heightClassName="h-10 md:h-14" />
           </Link>
 
           {/* Desktop Navigation */}

@@ -21,6 +21,8 @@ interface ProjectData {
   nextTitle: string;
   logoSrc?: string | null;
   socialLink?: string | null;
+  showcaseImg1?: string;
+  showcaseImg2?: string;
 }
 
 const projects: Record<string, ProjectData> = {
@@ -47,8 +49,10 @@ const projects: Record<string, ProjectData> = {
     statLabel: "Inquiry Growth",
     nextSlug: "digimark-pro",
     nextTitle: "DigiMark Pro Brand Identity",
-    logoSrc: "/seren-logo.png",
-    socialLink: "https://www.instagram.com/sereneducation/"
+    logoSrc: "/seren-logo.webp",
+    socialLink: "https://www.instagram.com/sereneducation/",
+    showcaseImg1: "/showcase_seren_1.webp",
+    showcaseImg2: "/showcase_seren_2.webp"
   },
   "digimark-pro": {
     slug: "digimark-pro",
@@ -73,8 +77,10 @@ const projects: Record<string, ProjectData> = {
     statLabel: "Monthly Reach",
     nextSlug: "web-development",
     nextTitle: "Website Development Projects",
-    logoSrc: "/logo.png",
-    socialLink: "https://www.instagram.com/digimark.pro_/"
+    logoSrc: "/logo.webp",
+    socialLink: "https://www.instagram.com/digimark.pro_/",
+    showcaseImg1: "/showcase_digimark_1.webp",
+    showcaseImg2: "/showcase_digimark_2.webp"
   },
   "web-development": {
     slug: "web-development",
@@ -100,7 +106,9 @@ const projects: Record<string, ProjectData> = {
     nextSlug: "seren-education",
     nextTitle: "Seren Education Consultants",
     logoSrc: null,
-    socialLink: null
+    socialLink: null,
+    showcaseImg1: "/showcase_web_1.webp",
+    showcaseImg2: "/showcase_web_2.webp"
   }
 };
 
@@ -272,36 +280,40 @@ export default async function CaseStudy({ params }: Props) {
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Card 1 */}
-              <div className="h-80 md:h-[400px] rounded-2xl bg-white border border-black/[0.04] flex items-center justify-center p-8 relative overflow-hidden group shadow-[0_4px_20px_rgba(0,0,0,0.01)]">
-                <div className="absolute inset-0 opacity-[0.02] group-hover:scale-105 transition-transform duration-700"
-                  style={{
-                    backgroundImage: "radial-gradient(#111 1.5px, transparent 1.5px)",
-                    backgroundSize: "24px 24px"
-                  }}
-                />
-                <div className="text-center space-y-4 z-10">
-                  <div className="w-16 h-16 rounded-full bg-[#FAF8F5] border border-black/[0.04] flex items-center justify-center mx-auto text-[var(--color-accent)] font-semibold shadow-sm">
-                    01
-                  </div>
-                  <h4 className="font-bold text-lg text-[#111111]">{project.title}</h4>
-                  <p className="text-xs uppercase tracking-widest text-[#6B7280]">Design Architecture & Grid</p>
+              <div className="h-80 md:h-[400px] rounded-2xl border border-black/[0.04] flex items-end p-8 relative overflow-hidden group shadow-[0_4px_20px_rgba(0,0,0,0.01)] bg-white">
+                {project.showcaseImg1 && (
+                  <img
+                    src={project.showcaseImg1}
+                    alt={`${project.title} Showcase 1`}
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out select-none pointer-events-none"
+                  />
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-80 z-10" />
+                <div className="space-y-1 z-20 text-white relative">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--color-accent)]">
+                    Showcase 01
+                  </span>
+                  <h4 className="font-bold text-lg leading-tight">{project.title}</h4>
+                  <p className="text-xs text-white/80">Design Architecture & Grid Details</p>
                 </div>
               </div>
 
               {/* Card 2 */}
-              <div className="h-80 md:h-[400px] rounded-2xl bg-[#111111] flex items-center justify-center p-8 relative overflow-hidden group shadow-[0_4px_20px_rgba(0,0,0,0.01)]">
-                <div className="absolute inset-0 opacity-[0.05] group-hover:scale-105 transition-transform duration-700"
-                  style={{
-                    backgroundImage: "linear-gradient(45deg, #FAF8F5 10%, transparent 10%)",
-                    backgroundSize: "20px 20px"
-                  }}
-                />
-                <div className="text-center space-y-4 z-10">
-                  <div className="w-16 h-16 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center mx-auto text-[var(--color-accent)] font-semibold shadow-sm">
-                    02
-                  </div>
-                  <h4 className="font-bold text-lg text-[#FAF8F5]">{project.title}</h4>
-                  <p className="text-xs uppercase tracking-widest text-[#6B7280]">Brand Layout Presentation</p>
+              <div className="h-80 md:h-[400px] rounded-2xl border border-black/[0.04] flex items-end p-8 relative overflow-hidden group shadow-[0_4px_20px_rgba(0,0,0,0.01)] bg-white">
+                {project.showcaseImg2 && (
+                  <img
+                    src={project.showcaseImg2}
+                    alt={`${project.title} Showcase 2`}
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out select-none pointer-events-none"
+                  />
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-80 z-10" />
+                <div className="space-y-1 z-20 text-white relative">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--color-accent)]">
+                    Showcase 02
+                  </span>
+                  <h4 className="font-bold text-lg leading-tight">{project.title}</h4>
+                  <p className="text-xs text-white/80">Brand Layout Presentation & Deliverables</p>
                 </div>
               </div>
             </div>

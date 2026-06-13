@@ -35,6 +35,7 @@ import NoiseBackground from "@/components/NoiseBackground";
 import GridPattern from "@/components/GridPattern";
 import ContactForm from "@/components/ContactForm";
 import TickerMarquee from "@/components/TickerMarquee";
+import IndustriesSection from "@/components/IndustriesSection";
 
 // Portfolio Projects data
 const projectsData = [
@@ -46,7 +47,8 @@ const projectsData = [
     tags: ["Branding", "Flex Design", "Marketing Materials"],
     stats: "+140% Inquiries",
     imageBg: "bg-radial from-[#C9A66B]/20 to-[#FAF8F5]",
-    logoSrc: "/seren-logo.png",
+    logoSrc: "/seren-logo.webp",
+    projectImg: "/project_seren.webp",
   },
   {
     slug: "digimark-pro",
@@ -56,7 +58,8 @@ const projectsData = [
     tags: ["Logo Design", "Brand Identity", "LinkedIn Branding", "Brochure Design"],
     stats: "20K+ Impressions",
     imageBg: "bg-radial from-[#111111]/10 to-[#FAF8F5]",
-    logoSrc: "/logo.png",
+    logoSrc: "/logo.webp",
+    projectImg: "/project_digimark.webp",
   },
   {
     slug: "web-development",
@@ -67,6 +70,7 @@ const projectsData = [
     stats: "<0.4s Load Time",
     imageBg: "bg-radial from-[#C9A66B]/10 to-[#FAF8F5]",
     logoSrc: null,
+    projectImg: "/project_web_dev.webp",
   }
 ];
 
@@ -76,37 +80,43 @@ const servicesData = [
     icon: <Sparkles className="w-8 h-8 text-[var(--color-accent)]" />,
     title: "Branding & Identity",
     description: "Building sleek, premium brand identities that create market authority and deep strategic positioning.",
-    tags: ["Logo Design", "Brand Strategy", "Visual Identity", "Social Media Branding"]
+    tags: ["Logo Design", "Brand Strategy", "Visual Identity", "Social Media Branding"],
+    serviceImg: "/service_branding.webp"
   },
   {
     icon: <Code className="w-8 h-8 text-[var(--color-accent)]" />,
     title: "Website Development",
     description: "Developing responsive, high-performance digital platforms optimized for speed, scalability, and usability.",
-    tags: ["Business Websites", "Landing Pages", "Portfolio Websites", "UI/UX Design"]
+    tags: ["Business Websites", "Landing Pages", "Portfolio Websites", "UI/UX Design"],
+    serviceImg: "/service_development.webp"
   },
   {
     icon: <TrendingUp className="w-8 h-8 text-[var(--color-accent)]" />,
     title: "Digital Marketing",
     description: "Data-driven advertising campaigns built for measurable reach, high engagement, and client acquisition.",
-    tags: ["Meta Ads", "Google Ads", "Lead Generation", "Campaign Strategy"]
+    tags: ["Meta Ads", "Google Ads", "Lead Generation", "Campaign Strategy"],
+    serviceImg: "/service_marketing.webp"
   },
   {
     icon: <MessageSquare className="w-8 h-8 text-[var(--color-accent)]" />,
     title: "Social Media Management",
     description: "Sustained audience engagement and growth strategies across major platforms to amplify authority.",
-    tags: ["Content Planning", "Instagram Growth", "Reels Strategy", "Audience Engagement"]
+    tags: ["Content Planning", "Instagram Growth", "Reels Strategy", "Audience Engagement"],
+    serviceImg: "/service_social.webp"
   },
   {
     icon: <Search className="w-8 h-8 text-[var(--color-accent)]" />,
     title: "SEO & GEO",
     description: "Search engine optimization and AI Search Engine Optimization (GEO) to dominate organic visibility.",
-    tags: ["Search Optimization", "AI SEO (GEO)", "Keyword Research", "Local SEO"]
+    tags: ["Search Optimization", "AI SEO (GEO)", "Keyword Research", "Local SEO"],
+    serviceImg: "/service_seo.webp"
   },
   {
     icon: <Cpu className="w-8 h-8 text-[var(--color-accent)]" />,
     title: "AI-Enhanced Solutions",
     description: "Automating customer touchpoints and workflows with state-of-the-art intelligent tools and logic.",
-    tags: ["AI Chatbots", "Marketing Automation", "AI Content Systems", "Smart Analytics"]
+    tags: ["AI Chatbots", "Marketing Automation", "AI Content Systems", "Smart Analytics"],
+    serviceImg: "/service_ai.webp"
   }
 ];
 
@@ -203,7 +213,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="font-sans text-5xl md:text-8xl font-black tracking-tight text-[#111111] leading-[1.05]"
+            className="font-sans text-4xl sm:text-6xl md:text-8xl font-black tracking-tight text-[#111111] leading-[1.05]"
           >
             Building Brands.<br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#111111] via-[var(--color-accent)] to-[#111111]">
@@ -316,33 +326,19 @@ export default function Home() {
                   data-hover-text="View Study"
                 >
                   {/* Decorative Project Card Artwork */}
-                  <div className={`w-full aspect-[4/3] rounded-xl flex items-center justify-center p-8 mb-6 overflow-hidden ${proj.imageBg} border border-black/[0.02] relative`}>
-                    <div className="absolute inset-0 opacity-[0.03] group-hover:scale-110 transition-transform duration-700"
-                      style={{
-                        backgroundImage: "radial-gradient(#111 1.5px, transparent 1.5px)",
-                        backgroundSize: "16px 16px"
-                      }}
+                  <div className="w-full aspect-[4/3] rounded-xl flex items-center justify-center mb-6 overflow-hidden border border-black/[0.04] relative bg-white">
+                    <img
+                      src={proj.projectImg}
+                      alt={proj.title}
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out select-none pointer-events-none"
                     />
-                    {proj.logoSrc ? (
-                      <img
-                        src={proj.logoSrc}
-                        alt={`${proj.title} Logo`}
-                        className="max-h-16 max-w-[80%] object-contain mix-blend-multiply select-none pointer-events-none group-hover:scale-105 transition-transform duration-500"
-                      />
-                    ) : (
-                      <div className="w-[70%] aspect-video rounded-lg border border-black/[0.08] bg-white shadow-[0_4px_20px_rgba(0,0,0,0.02)] p-2 space-y-1.5 group-hover:scale-105 transition-transform duration-500">
-                        <div className="flex items-center space-x-1 border-b border-black/[0.04] pb-1.5">
-                          <div className="w-1.5 h-1.5 rounded-full bg-red-400" />
-                          <div className="w-1.5 h-1.5 rounded-full bg-yellow-400" />
-                          <div className="w-1.5 h-1.5 rounded-full bg-green-400" />
-                        </div>
-                        <div className="grid grid-cols-3 gap-1.5">
-                          <div className="col-span-1 rounded bg-black/[0.02] h-10" />
-                          <div className="col-span-2 rounded bg-black/[0.01] h-10 flex flex-col justify-center px-1.5 space-y-1">
-                            <div className="w-12 h-1 bg-black/[0.08] rounded" />
-                            <div className="w-8 h-1 bg-black/[0.04] rounded" />
-                          </div>
-                        </div>
+                    {proj.logoSrc && (
+                      <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-black/[0.04] flex items-center justify-center shadow-sm">
+                        <img
+                          src={proj.logoSrc}
+                          alt={`${proj.title} Logo`}
+                          className="h-6 w-auto object-contain select-none pointer-events-none mix-blend-multiply"
+                        />
                       </div>
                     )}
                   </div>
@@ -411,7 +407,7 @@ export default function Home() {
                 <div
                   key={idx}
                   className={`bg-white border border-black/[0.04] rounded-2xl p-8 hover:border-[var(--color-accent)] transition-all duration-500 shadow-[0_4px_30px_rgba(0,0,0,0.01)] group relative overflow-hidden flex flex-col justify-between ${
-                    isLarge ? "md:col-span-2 md:p-12" : "col-span-1"
+                    isLarge ? "md:col-span-2 md:p-10" : "col-span-1"
                   }`}
                 >
                   <div className="absolute inset-0 opacity-[0.02] group-hover:scale-105 transition-transform duration-700"
@@ -420,38 +416,83 @@ export default function Home() {
                       backgroundSize: "24px 24px"
                     }}
                   />
-                  <div className="space-y-6 z-10">
-                    <div className="w-12 h-12 rounded-xl bg-[#FAF8F5] flex items-center justify-center">
-                      {service.icon}
-                    </div>
-                    <h3 className={`font-sans font-bold tracking-tight text-[#111111] ${isLarge ? "text-2xl" : "text-xl"}`}>
-                      {service.title}
-                    </h3>
-                    <p className={`text-[#6B7280] leading-relaxed ${isLarge ? "text-sm max-w-lg" : "text-xs"}`}>
-                      {service.description}
-                    </p>
-                  </div>
+                  {isLarge ? (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center z-10 w-full h-full">
+                      <div className="space-y-6 flex flex-col justify-between h-full">
+                        <div className="space-y-4">
+                          <div className="w-12 h-12 rounded-xl bg-[#FAF8F5] flex items-center justify-center">
+                            {service.icon}
+                          </div>
+                          <h3 className="font-sans font-bold tracking-tight text-[#111111] text-2xl">
+                            {service.title}
+                          </h3>
+                          <p className="text-[#6B7280] text-sm leading-relaxed max-w-sm">
+                            {service.description}
+                          </p>
+                        </div>
 
-                  <div className="flex flex-wrap gap-2 pt-6 border-t border-black/[0.04] z-10 mt-6">
-                    {service.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className={`font-sans font-semibold text-[#6B7280] bg-[#FAF8F5] ${
-                          isLarge
-                            ? "text-[10px] uppercase tracking-wider border border-black/[0.03] px-3 py-1.5 rounded-full"
-                            : "text-[9px] px-2.5 py-1 rounded-md"
-                        }`}
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                        <div className="flex flex-wrap gap-2 pt-6 border-t border-black/[0.04] mt-auto">
+                          {service.tags.map((tag) => (
+                            <span
+                              key={tag}
+                              className="font-sans font-semibold text-[#6B7280] bg-[#FAF8F5] text-[10px] uppercase tracking-wider border border-black/[0.03] px-3 py-1.5 rounded-full"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="relative w-full aspect-[4/3] md:h-full rounded-xl overflow-hidden border border-black/[0.04] bg-white group-hover:scale-[1.01] transition-transform duration-500 shadow-sm">
+                        <img
+                          src={service.serviceImg}
+                          alt={service.title}
+                          className="w-full h-full object-cover select-none pointer-events-none group-hover:scale-105 transition-transform duration-700 ease-out"
+                        />
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="flex flex-col justify-between h-full z-10">
+                      <div className="space-y-4 mb-6">
+                        <div className="w-12 h-12 rounded-xl bg-[#FAF8F5] flex items-center justify-center">
+                          {service.icon}
+                        </div>
+                        <h3 className="font-sans font-bold tracking-tight text-[#111111] text-xl">
+                          {service.title}
+                        </h3>
+                        <p className="text-[#6B7280] text-xs leading-relaxed">
+                          {service.description}
+                        </p>
+                      </div>
+
+                      <div className="relative w-full aspect-[16/10] rounded-xl overflow-hidden border border-black/[0.04] bg-white mb-6 group-hover:scale-[1.01] transition-transform duration-500 shadow-sm">
+                        <img
+                          src={service.serviceImg}
+                          alt={service.title}
+                          className="w-full h-full object-cover select-none pointer-events-none group-hover:scale-105 transition-transform duration-700 ease-out"
+                        />
+                      </div>
+
+                      <div className="flex flex-wrap gap-2 pt-4 border-t border-black/[0.04] mt-auto">
+                        {service.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="font-sans font-semibold text-[#6B7280] bg-[#FAF8F5] text-[9px] px-2.5 py-1 rounded-md"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               );
             })}
           </div>
         </div>
       </section>
+
+      <IndustriesSection />
 
       <TickerMarquee />
 
@@ -499,7 +540,7 @@ export default function Home() {
                 }}
               />
               <img
-                src="/growth-path.png"
+                src="/growth-path.webp"
                 alt="Connect, Grow, Succeed Growth Funnel"
                 className="w-full max-w-[420px] h-auto object-contain mix-blend-multiply select-none pointer-events-none group-hover:scale-[1.02] transition-transform duration-500"
               />

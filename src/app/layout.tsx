@@ -21,9 +21,9 @@ export const metadata: Metadata = {
   keywords: "Branding, Web Development, Digital Marketing, Next.js, React, Tailwind CSS, Growth solutions, Premium Agency",
   authors: [{ name: "DigiMark Pro" }],
   icons: {
-    icon: "/logo.png",
-    shortcut: "/logo.png",
-    apple: "/logo.png",
+    icon: "/logo.webp",
+    shortcut: "/logo.webp",
+    apple: "/logo.webp",
   },
   metadataBase: new URL("https://digimarkpro.in"),
   openGraph: {
@@ -61,7 +61,7 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": "DigiMark Pro",
-    "image": "https://digimarkpro.in/logo.png",
+    "image": "https://digimarkpro.in/logo.webp",
     "description": "Premium brand design, Next.js engineering, and growth strategies.",
     "url": "https://digimarkpro.in",
     "telephone": "+919876543210",
@@ -79,6 +79,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
       style={{ scrollBehavior: "smooth" }}
       data-scroll-behavior="smooth"
+      suppressHydrationWarning
     >
       <head>
         <script
@@ -86,7 +87,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
         />
       </head>
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <LenisProvider>
           <NoiseBackground />
           <CustomCursor />
