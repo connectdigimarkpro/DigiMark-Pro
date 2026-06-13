@@ -29,6 +29,7 @@ import {
   FileText
 } from "lucide-react";
 
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import NoiseBackground from "@/components/NoiseBackground";
@@ -259,14 +260,15 @@ export default function Home() {
             className="pt-20 border-t border-black/[0.04] grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto"
           >
             {[
-              { text: "Branding", count: "01" },
-              { text: "Web Development", count: "02" },
-              { text: "Digital Marketing", count: "03" },
-              { text: "Growth Solutions", count: "04" },
+              { text: "Branding", count: "01", icon: <Sparkles className="w-4 h-4 text-[var(--color-accent)] flex-shrink-0" /> },
+              { text: "Web Development", count: "02", icon: <Code className="w-4 h-4 text-[var(--color-accent)] flex-shrink-0" /> },
+              { text: "Digital Marketing", count: "03", icon: <TrendingUp className="w-4 h-4 text-[var(--color-accent)] flex-shrink-0" /> },
+              { text: "Growth Solutions", count: "04", icon: <Target className="w-4 h-4 text-[var(--color-accent)] flex-shrink-0" /> },
             ].map((cap, idx) => (
-              <div key={idx} className="flex items-center justify-center space-x-2 py-3 px-4 rounded-xl bg-white/30 backdrop-blur-sm border border-black/[0.02]">
-                <span className="text-[10px] font-bold text-[var(--color-accent)]">{cap.count}</span>
-                <span className="text-xs font-bold uppercase tracking-wider text-[#111111]">{cap.text}</span>
+              <div key={idx} className="flex items-center justify-center space-x-2.5 py-4 px-5 rounded-xl bg-white/50 backdrop-blur-sm border border-black/[0.04] shadow-sm hover:border-[var(--color-accent)]/50 transition-colors duration-300">
+                <span className="text-[10px] font-black text-[#6b7280]">{cap.count}</span>
+                {cap.icon}
+                <span className="text-xs font-black uppercase tracking-widest text-[#111111]">{cap.text}</span>
               </div>
             ))}
           </motion.div>
@@ -327,16 +329,20 @@ export default function Home() {
                 >
                   {/* Decorative Project Card Artwork */}
                   <div className="w-full aspect-[4/3] rounded-xl flex items-center justify-center mb-6 overflow-hidden border border-black/[0.04] relative bg-white">
-                    <img
+                    <Image
                       src={proj.projectImg}
                       alt={proj.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out select-none pointer-events-none"
                     />
                     {proj.logoSrc && (
-                      <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-black/[0.04] flex items-center justify-center shadow-sm">
-                        <img
+                      <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-black/[0.04] flex items-center justify-center shadow-sm z-10">
+                        <Image
                           src={proj.logoSrc}
                           alt={`${proj.title} Logo`}
+                          width={60}
+                          height={24}
                           className="h-6 w-auto object-contain select-none pointer-events-none mix-blend-multiply"
                         />
                       </div>
@@ -444,9 +450,11 @@ export default function Home() {
                       </div>
 
                       <div className="relative w-full aspect-[4/3] md:h-full rounded-xl overflow-hidden border border-black/[0.04] bg-white group-hover:scale-[1.01] transition-transform duration-500 shadow-sm">
-                        <img
+                        <Image
                           src={service.serviceImg}
                           alt={service.title}
+                          fill
+                          sizes="(max-width: 768px) 100vw, 50vw"
                           className="w-full h-full object-cover select-none pointer-events-none group-hover:scale-105 transition-transform duration-700 ease-out"
                         />
                       </div>
@@ -466,9 +474,11 @@ export default function Home() {
                       </div>
 
                       <div className="relative w-full aspect-[16/10] rounded-xl overflow-hidden border border-black/[0.04] bg-white mb-6 group-hover:scale-[1.01] transition-transform duration-500 shadow-sm">
-                        <img
+                        <Image
                           src={service.serviceImg}
                           alt={service.title}
+                          fill
+                          sizes="(max-width: 768px) 100vw, 33vw"
                           className="w-full h-full object-cover select-none pointer-events-none group-hover:scale-105 transition-transform duration-700 ease-out"
                         />
                       </div>
@@ -539,9 +549,11 @@ export default function Home() {
                   backgroundSize: "24px 24px"
                 }}
               />
-              <img
+              <Image
                 src="/growth-path.webp"
                 alt="Connect, Grow, Succeed Growth Funnel"
+                width={420}
+                height={300}
                 className="w-full max-w-[420px] h-auto object-contain mix-blend-multiply select-none pointer-events-none group-hover:scale-[1.02] transition-transform duration-500"
               />
             </div>
@@ -742,8 +754,8 @@ export default function Home() {
             <div className="space-y-6 pt-4 border-t border-black/[0.06]">
               <div>
                 <span className="block text-[10px] font-bold uppercase tracking-widest text-[#6B7280] mb-1">Send An Email</span>
-                <a href="mailto:digimarkpro26@gmail.com" className="text-lg font-bold text-[#111111] hover:text-[var(--color-accent)] transition-colors">
-                  digimarkpro26@gmail.com
+                <a href="mailto:connect.digimarkpro@gmail.com" className="text-lg font-bold text-[#111111] hover:text-[var(--color-accent)] transition-colors">
+                  connect.digimarkpro@gmail.com
                 </a>
               </div>
               

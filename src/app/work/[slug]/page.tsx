@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, ArrowRight, ArrowUpRight, CheckCircle, Award, Target, Lightbulb, Package } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -148,10 +149,12 @@ export default async function CaseStudy({ params }: Props) {
           <div className="space-y-6">
             {project.logoSrc && (
               <div className="mb-4">
-                <img
+                <Image
                   src={project.logoSrc}
                   alt={`${project.title} Logo`}
-                  className="h-16 w-auto object-contain mix-blend-multiply select-none pointer-events-none"
+                  width={120}
+                  height={64}
+                  className="h-16 w-auto object-contain select-none pointer-events-none mix-blend-multiply"
                 />
               </div>
             )}
@@ -282,9 +285,11 @@ export default async function CaseStudy({ params }: Props) {
               {/* Card 1 */}
               <div className="h-80 md:h-[400px] rounded-2xl border border-black/[0.04] flex items-end p-8 relative overflow-hidden group shadow-[0_4px_20px_rgba(0,0,0,0.01)] bg-white">
                 {project.showcaseImg1 && (
-                  <img
+                  <Image
                     src={project.showcaseImg1}
                     alt={`${project.title} Showcase 1`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out select-none pointer-events-none"
                   />
                 )}
@@ -301,9 +306,11 @@ export default async function CaseStudy({ params }: Props) {
               {/* Card 2 */}
               <div className="h-80 md:h-[400px] rounded-2xl border border-black/[0.04] flex items-end p-8 relative overflow-hidden group shadow-[0_4px_20px_rgba(0,0,0,0.01)] bg-white">
                 {project.showcaseImg2 && (
-                  <img
+                  <Image
                     src={project.showcaseImg2}
                     alt={`${project.title} Showcase 2`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out select-none pointer-events-none"
                   />
                 )}

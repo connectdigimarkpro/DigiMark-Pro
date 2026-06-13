@@ -51,7 +51,7 @@ export default function Footer() {
               </svg>
             </a>
             <a
-              href="mailto:digimarkpro26@gmail.com"
+              href="mailto:connect.digimarkpro@gmail.com"
               className="w-9 h-9 rounded-full bg-black/[0.02] hover:bg-[#111111] hover:text-[#FAF8F5] text-[#6B7280] flex items-center justify-center transition-all duration-300 border border-black/[0.03]"
               aria-label="Email"
             >

@@ -41,7 +41,7 @@ export async function POST(request: Request) {
 
     const data = await resend.emails.send({
       from: "DigiMark Pro Appointments <onboarding@resend.dev>", // Replace with verified domain in production
-      to: ["digimarkpro26@gmail.com"], // Target address
+      to: ["connect.digimarkpro@gmail.com"], // Target address
       subject: `New Consultation Booked: ${serviceRequired} on ${date}`,
       html: `
         <div style="background-color: #FAF8F5; padding: 40px 20px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #111111;">

@@ -222,12 +222,7 @@ export default function IndustriesSection() {
     }
   ];
 
-  const statistics = [
-    { value: "100+", label: "Projects Completed" },
-    { value: "50+", label: "Happy Clients" },
-    { value: "95%", label: "Client Retention" },
-    { value: "5+", label: "Years Experience" }
-  ];
+
 
   return (
     <section id="industries" className="py-24 bg-white relative overflow-hidden border-t border-black/[0.03]">
@@ -323,28 +318,7 @@ export default function IndustriesSection() {
           ))}
         </div>
 
-        {/* Business Statistics Row */}
-        <div className="pt-12 border-t border-black/[0.04]">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {statistics.map((stat, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.05 }}
-                className="space-y-2 group"
-              >
-                <span className="block text-4xl md:text-5xl font-black tracking-tight text-[#111111] group-hover:text-[#FF2B2B] transition-colors duration-300">
-                  {stat.value}
-                </span>
-                <span className="block text-xs font-bold uppercase tracking-widest text-[#6B7280]">
-                  {stat.label}
-                </span>
-              </motion.div>
-            ))}
-          </div>
-        </div>
+
 
         {/* Call to Action Banner Card */}
         <motion.div

@@ -48,7 +48,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
           {/* Logo */}
           <Link href="/#home" className="flex items-center group transition-transform duration-300 hover:scale-[1.02]">
-            <Logo heightClassName="h-10 md:h-14" />
+            <Logo heightClassName="h-16 md:h-22" />
           </Link>
 
           {/* Desktop Navigation */}
@@ -97,7 +97,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="fixed inset-0 top-[72px] z-30 bg-[#FAF8F5] border-t border-black/[0.04] px-6 py-10 md:hidden flex flex-col justify-between"
+            className="fixed inset-0 top-[96px] z-30 bg-[#FAF8F5] border-t border-black/[0.04] px-6 py-10 md:hidden flex flex-col justify-between"
           >
             <nav className="flex flex-col space-y-6">
               {navLinks.map((link, idx) => (
