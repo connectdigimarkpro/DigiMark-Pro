@@ -1,19 +1,12 @@
-"use client";
-
-import { useState } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
 import { 
   ArrowUpRight, 
-  Layers, 
   Code, 
   TrendingUp, 
   Sparkles, 
   ArrowRight,
   ShieldCheck,
   Zap,
-  Globe,
-  Database,
   Cpu,
   CheckCircle,
   UserCheck,
@@ -34,46 +27,11 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import NoiseBackground from "@/components/NoiseBackground";
 import GridPattern from "@/components/GridPattern";
+import FeaturedWork from "@/components/FeaturedWork";
+import ProcessTimeline from "@/components/ProcessTimeline";
 import ContactForm from "@/components/ContactForm";
 import TickerMarquee from "@/components/TickerMarquee";
 import IndustriesSection from "@/components/IndustriesSection";
-
-// Portfolio Projects data
-const projectsData = [
-  {
-    slug: "seren-education",
-    title: "Seren Education Consultants",
-    category: "Branding",
-    summary: "Luxury brand system for elite global university advisors.",
-    tags: ["Branding", "Flex Design", "Marketing Materials"],
-    stats: "+140% Inquiries",
-    imageBg: "bg-radial from-[#C9A66B]/20 to-[#FAF8F5]",
-    logoSrc: "/seren-logo.webp",
-    projectImg: "/project_seren.webp",
-  },
-  {
-    slug: "digimark-pro",
-    title: "DigiMark Pro Brand Identity",
-    category: "Branding",
-    summary: "Minimalist brand book and corporate assets for our own agency.",
-    tags: ["Logo Design", "Brand Identity", "LinkedIn Branding", "Brochure Design"],
-    stats: "20K+ Impressions",
-    imageBg: "bg-radial from-[#111111]/10 to-[#FAF8F5]",
-    logoSrc: "/logo.webp",
-    projectImg: "/project_digimark.webp",
-  },
-  {
-    slug: "web-development",
-    title: "Website Development Projects",
-    category: "Web Development",
-    summary: "High-performance digital products and Next.js applications.",
-    tags: ["Next.js", "Landing Pages", "Full Stack Applications"],
-    stats: "<0.4s Load Time",
-    imageBg: "bg-radial from-[#C9A66B]/10 to-[#FAF8F5]",
-    logoSrc: null,
-    projectImg: "/project_web_dev.webp",
-  }
-];
 
 // Services data
 const servicesData = [
@@ -129,40 +87,6 @@ const statsData = [
   { value: "2.4x", label: "Pipeline Scaling" }
 ];
 
-// Process Timeline Steps
-const processSteps = [
-  {
-    num: "01",
-    title: "RESEARCH",
-    desc: "Deep market analysis and audience research focused on identifying scalable growth opportunities.",
-    badge: "+120% Growth"
-  },
-  {
-    num: "02",
-    title: "STRATEGY",
-    desc: "Creating conversion-focused digital roadmaps tailored for business growth and positioning.",
-    badge: null
-  },
-  {
-    num: "03",
-    title: "DESIGN",
-    desc: "Building modern visual systems and premium brand experiences that create impact.",
-    badge: "8.7K Conversions"
-  },
-  {
-    num: "04",
-    title: "DEVELOPMENT",
-    desc: "Developing responsive, high-performance digital platforms optimized for speed and usability.",
-    badge: null
-  },
-  {
-    num: "05",
-    title: "GROWTH",
-    desc: "Scaling brands using performance marketing, AI-enhanced systems, and measurable strategies.",
-    badge: "250% ROI"
-  }
-];
-
 // Tech Stack List
 const techStack = [
   { name: "Meta Ads", icon: <Target className="w-5 h-5 text-[#6B7280]" /> },
@@ -178,12 +102,6 @@ const techStack = [
 ];
 
 export default function Home() {
-  const [activeFilter, setActiveFilter] = useState("All");
-
-  const filteredProjects = activeFilter === "All"
-    ? projectsData
-    : projectsData.filter(proj => proj.category === activeFilter);
-
   return (
     <>
       {/* Interactive Global Elements */}
@@ -198,45 +116,33 @@ export default function Home() {
         <div id="scroll-progress" style={{ transform: "scaleX(0)" }} className="fixed top-0 left-0 right-0 h-1 bg-[var(--color-accent)] z-50 origin-left" />
 
         <div className="max-w-7xl mx-auto px-6 md:px-12 text-center space-y-8 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center space-x-2 bg-white border border-black/[0.04] px-4 py-1.5 rounded-full shadow-sm"
+          <div
+            className="inline-flex items-center space-x-2 bg-white border border-black/[0.04] px-4 py-1.5 rounded-full shadow-sm animate-hero-fade"
           >
             <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" />
             <span className="text-xs font-semibold tracking-wider uppercase text-[#111111] font-sans">
               Growth meets Innovation
             </span>
-          </motion.div>
+          </div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="font-sans text-4xl sm:text-6xl md:text-8xl font-black tracking-tight text-[#111111] leading-[1.05]"
+          <h1
+            className="font-sans text-4xl sm:text-6xl md:text-8xl font-black tracking-tight text-[#111111] leading-[1.05] animate-hero-fade"
           >
             Building Brands.<br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#111111] via-[var(--color-accent)] to-[#111111]">
               Driving Growth.
             </span><br />
             Creating Experiences.
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-sans text-lg md:text-xl text-[#6B7280] max-w-2xl mx-auto leading-relaxed"
+          <p
+            className="font-sans text-lg md:text-xl text-[#6B7280] max-w-2xl mx-auto leading-relaxed animate-hero-fade"
           >
             DigiMark Pro helps businesses scale through custom high-fidelity branding, bespoke website development, and organic growth-focused marketing.
-          </motion.p>
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
+          <div
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 animate-hero-fade"
           >
             <Link
               href="#work"
@@ -250,14 +156,11 @@ export default function Home() {
             >
               Book Consultation
             </Link>
-          </motion.div>
+          </div>
 
           {/* Trust Ticker / Capabilities */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6, duration: 1 }}
-            className="pt-20 border-t border-black/[0.04] grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto"
+          <div
+            className="pt-20 border-t border-black/[0.04] grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto animate-hero-fade"
           >
             {[
               { text: "Branding", count: "01", icon: <Sparkles className="w-4 h-4 text-[var(--color-accent)] flex-shrink-0" /> },
@@ -271,126 +174,11 @@ export default function Home() {
                 <span className="text-xs font-black uppercase tracking-widest text-[#111111]">{cap.text}</span>
               </div>
             ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Featured Work Section */}
-      <section id="work" className="py-24 px-6 md:px-12 bg-white relative">
-        <div className="max-w-7xl mx-auto space-y-12">
-          {/* Section title */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-black/[0.06] pb-8">
-            <div className="space-y-4">
-              <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-accent)]">Featured Work</span>
-              <h2 className="font-sans text-3xl md:text-5xl font-bold tracking-tight text-[#111111]">
-                Bespoke Showcases
-              </h2>
-            </div>
-            
-            {/* Category Filter Tab Bar */}
-            <div className="flex flex-wrap items-center gap-2">
-              {["All", "Branding", "Web Development"].map((filter) => (
-                <button
-                  key={filter}
-                  onClick={() => setActiveFilter(filter)}
-                  className={`px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 relative ${
-                    activeFilter === filter
-                      ? "text-[#FAF8F5]"
-                      : "text-[#6B7280] hover:text-[#111111]"
-                  }`}
-                >
-                  <span className="relative z-10">{filter}</span>
-                  {activeFilter === filter && (
-                    <motion.span
-                      layoutId="activeFilterBg"
-                      className="absolute inset-0 bg-[#111111] rounded-full z-0"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                    />
-                  )}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <AnimatePresence mode="popLayout">
-              {filteredProjects.map((proj) => (
-                <motion.div
-                  layout
-                  initial={{ opacity: 0, scale: 0.98 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.98 }}
-                  transition={{ duration: 0.5 }}
-                  key={proj.slug}
-                  className="group flex flex-col bg-[#FAF8F5] border border-black/[0.04] rounded-2xl overflow-hidden p-6 md:p-8 hover:border-[var(--color-accent)] transition-all duration-500 shadow-[0_4px_30px_rgba(0,0,0,0.01)] cursor-pointer"
-                  data-hover="true"
-                  data-hover-text="View Study"
-                >
-                  {/* Decorative Project Card Artwork */}
-                  <div className="w-full aspect-[4/3] rounded-xl flex items-center justify-center mb-6 overflow-hidden border border-black/[0.04] relative bg-white">
-                    <Image
-                      src={proj.projectImg}
-                      alt={proj.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out select-none pointer-events-none"
-                    />
-                    {proj.logoSrc && (
-                      <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-black/[0.04] flex items-center justify-center shadow-sm z-10">
-                        <Image
-                          src={proj.logoSrc}
-                          alt={`${proj.title} Logo`}
-                          width={60}
-                          height={24}
-                          className="h-6 w-auto object-contain select-none pointer-events-none mix-blend-multiply"
-                        />
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="flex-grow flex flex-col space-y-4">
-                    <div className="flex justify-between items-start gap-4">
-                      <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--color-accent)]">
-                        {proj.category}
-                      </span>
-                      <span className="text-xs font-semibold px-2 py-1 rounded bg-[#111111]/5 text-[#111111]">
-                        {proj.stats}
-                      </span>
-                    </div>
-
-                    <h3 className="font-sans text-xl font-bold tracking-tight text-[#111111] group-hover:text-[var(--color-accent)] transition-colors">
-                      {proj.title}
-                    </h3>
-                    
-                    <p className="text-sm text-[#6B7280] leading-relaxed">
-                      {proj.summary}
-                    </p>
-
-                    <div className="flex flex-wrap gap-2 pt-2">
-                      {proj.tags.map((tag) => (
-                        <span key={tag} className="text-[10px] font-medium text-[#6B7280] border border-black/[0.04] px-2 py-1 rounded-md bg-white">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-
-                    <div className="pt-6 border-t border-black/[0.04] mt-auto flex items-center justify-between">
-                      <Link
-                        href={`/work/${proj.slug}`}
-                        className="inline-flex items-center text-xs font-bold uppercase tracking-wider text-[#111111] group-hover:text-[var(--color-accent)] transition-colors"
-                      >
-                        Explore Case Study
-                        <ArrowRight className="ml-1.5 w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
-                      </Link>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
           </div>
         </div>
       </section>
+
+      <FeaturedWork />
 
       {/* Services Section */}
       <section id="services" className="py-24 px-6 md:px-12 bg-[#FAF8F5] relative">
@@ -554,7 +342,8 @@ export default function Home() {
                 alt="Connect, Grow, Succeed Growth Funnel"
                 width={420}
                 height={300}
-                className="w-full max-w-[420px] h-auto object-contain mix-blend-multiply select-none pointer-events-none group-hover:scale-[1.02] transition-transform duration-500"
+                style={{ height: "auto" }}
+                className="w-full max-w-[420px] object-contain mix-blend-multiply select-none pointer-events-none group-hover:scale-[1.02] transition-transform duration-500"
               />
             </div>
           </div>
@@ -588,41 +377,7 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Interactive vertical scroll timeline */}
-          <div className="max-w-4xl mx-auto relative pl-6 md:pl-12 border-l border-black/[0.06] space-y-12">
-            {processSteps.map((step, idx) => (
-              <motion.div
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
-                key={idx}
-                className="relative group"
-              >
-                {/* Timeline Bullet */}
-                <div className="absolute -left-[31px] md:-left-[55px] w-4 h-4 rounded-full bg-[#FAF8F5] border-2 border-[var(--color-accent)] flex items-center justify-center group-hover:scale-110 transition-transform duration-300" />
-
-                <div className="bg-white border border-black/[0.04] p-6 md:p-8 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.01)] hover:border-[var(--color-accent)] transition-all duration-300">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-bold text-[var(--color-accent)] tracking-widest uppercase">
-                      Phase {step.num}
-                    </span>
-                    {step.badge && (
-                      <span className="text-[10px] font-bold text-[#111111] bg-black/[0.03] border border-black/[0.05] px-2 py-0.5 rounded-md">
-                        {step.badge}
-                      </span>
-                    )}
-                  </div>
-                  <h3 className="font-sans text-xl font-bold text-[#111111] mb-3 uppercase tracking-tight">
-                    {step.title}
-                  </h3>
-                  <p className="text-sm text-[#6B7280] leading-relaxed">
-                    {step.desc}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+          <ProcessTimeline />
         </div>
       </section>
 

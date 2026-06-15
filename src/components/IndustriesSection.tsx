@@ -1,7 +1,8 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Star, Heart, Activity, BookOpen, BarChart3, ShoppingCart, Home, Settings } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 interface Industry {
@@ -12,6 +13,16 @@ interface Industry {
 }
 
 export default function IndustriesSection() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 768px)");
+    setIsMobile(media.matches);
+    const listener = () => setIsMobile(media.matches);
+    media.addEventListener("change", listener);
+    return () => media.removeEventListener("change", listener);
+  }, []);
+
   const industries: Industry[] = [
     {
       title: "Restaurants & Cafes",
@@ -21,7 +32,7 @@ export default function IndustriesSection() {
         <svg viewBox="0 0 100 100" className="w-20 h-20 transition-transform duration-500 group-hover:scale-110">
           <defs>
             <linearGradient id="grad-restaurant" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#FF2B2B" stopOpacity="0.8" />
+              <stop offset="0%" stopColor="#C9A66B" stopOpacity="0.8" />
               <stop offset="100%" stopColor="#111111" />
             </linearGradient>
           </defs>
@@ -32,9 +43,9 @@ export default function IndustriesSection() {
           <path d="M22 65 C22 35, 78 35, 78 65 Z" fill="none" stroke="url(#grad-restaurant)" strokeWidth="3" />
           <circle cx="50" cy="31" r="5" fill="none" stroke="url(#grad-restaurant)" strokeWidth="2.5" />
           {/* Heart representing likes / social */}
-          <path d="M50 48 C48 44, 42 44, 42 49 C42 55, 50 60, 50 60 C50 60, 58 55, 58 49 C58 44, 52 44, 50 48 Z" fill="#FF2B2B" className="animate-pulse origin-center" style={{ transformOrigin: "50px 52px" }} />
+          <path d="M50 48 C48 44, 42 44, 42 49 C42 55, 50 60, 50 60 C50 60, 58 55, 58 49 C58 44, 52 44, 50 48 Z" fill="#C9A66B" className="animate-pulse origin-center" style={{ transformOrigin: "50px 52px" }} />
           {/* Steam lines */}
-          <path d="M45 20 Q48 15 45 10" fill="none" stroke="#FF2B2B" strokeWidth="1.5" strokeLinecap="round" />
+          <path d="M45 20 Q48 15 45 10" fill="none" stroke="#C9A66B" strokeWidth="1.5" strokeLinecap="round" />
           <path d="M55 20 Q58 15 55 10" fill="none" stroke="#6B7280" strokeWidth="1.5" strokeLinecap="round" />
         </svg>
       )
@@ -47,7 +58,7 @@ export default function IndustriesSection() {
         <svg viewBox="0 0 100 100" className="w-20 h-20 transition-transform duration-500 group-hover:scale-110">
           <defs>
             <linearGradient id="grad-hotel" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#FF2B2B" />
+              <stop offset="0%" stopColor="#C9A66B" />
               <stop offset="100%" stopColor="#333333" />
             </linearGradient>
           </defs>
@@ -62,9 +73,9 @@ export default function IndustriesSection() {
           {/* Entrance */}
           <path d="M45 80 L45 70 C45 67, 55 67, 55 70 L55 80" fill="none" stroke="url(#grad-hotel)" strokeWidth="2" />
           {/* Stars */}
-          <path d="M38 22 L40 25 L44 25 L41 27 L42 31 L38 29 L34 31 L35 27 L32 25 L36 25 Z" fill="#FF2B2B" />
-          <path d="M50 16 L52 19 L56 19 L53 21 L54 25 L50 23 L46 25 L47 21 L44 19 L48 19 Z" fill="#FF2B2B" />
-          <path d="M62 22 L64 25 L68 25 L65 27 L66 31 L62 29 L58 31 L59 27 L56 25 L60 25 Z" fill="#FF2B2B" />
+          <path d="M38 22 L40 25 L44 25 L41 27 L42 31 L38 29 L34 31 L35 27 L32 25 L36 25 Z" fill="#C9A66B" />
+          <path d="M50 16 L52 19 L56 19 L53 21 L54 25 L50 23 L46 25 L47 21 L44 19 L48 19 Z" fill="#C9A66B" />
+          <path d="M62 22 L64 25 L68 25 L65 27 L66 31 L62 29 L58 31 L59 27 L56 25 L60 25 Z" fill="#C9A66B" />
         </svg>
       )
     },
@@ -76,7 +87,7 @@ export default function IndustriesSection() {
         <svg viewBox="0 0 100 100" className="w-20 h-20 transition-transform duration-500 group-hover:scale-110">
           <defs>
             <linearGradient id="grad-hospital" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#FF2B2B" />
+              <stop offset="0%" stopColor="#C9A66B" />
               <stop offset="100%" stopColor="#111111" />
             </linearGradient>
           </defs>
@@ -85,7 +96,7 @@ export default function IndustriesSection() {
           {/* Medical Cross */}
           <path d="M44 32 H56 V44 H68 V56 H56 V68 H44 V56 H32 V44 H44 Z" fill="none" stroke="url(#grad-hospital)" strokeWidth="2.5" />
           {/* Heart Rate signal passing through cross */}
-          <path d="M15 48 L22 48 L26 38 L30 58 L34 44 L38 48 L85 48" fill="none" stroke="#FF2B2B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="opacity-40" />
+          <path d="M15 48 L22 48 L26 38 L30 58 L34 44 L38 48 L85 48" fill="none" stroke="#C9A66B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="opacity-40" />
         </svg>
       )
     },
@@ -97,7 +108,7 @@ export default function IndustriesSection() {
         <svg viewBox="0 0 100 100" className="w-20 h-20 transition-transform duration-500 group-hover:scale-110">
           <defs>
             <linearGradient id="grad-school" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#FF2B2B" />
+              <stop offset="0%" stopColor="#C9A66B" />
               <stop offset="100%" stopColor="#111111" />
             </linearGradient>
           </defs>
@@ -105,7 +116,7 @@ export default function IndustriesSection() {
           <polygon points="50,15 88,32 50,49 12,32" fill="none" stroke="url(#grad-school)" strokeWidth="3" />
           <path d="M26 42 V65 C26 72, 50 78, 50 78 C50 78, 74 72, 74 65 V42" fill="none" stroke="url(#grad-school)" strokeWidth="2" />
           {/* Cap Tassel */}
-          <path d="M88 32 V55 L84 62" fill="none" stroke="#FF2B2B" strokeWidth="2.5" strokeLinecap="round" />
+          <path d="M88 32 V55 L84 62" fill="none" stroke="#C9A66B" strokeWidth="2.5" strokeLinecap="round" />
           {/* Open Book */}
           <path d="M28 64 C38 60, 50 64, 50 64 C50 64, 62 60, 72 64" fill="none" stroke="#6B7280" strokeWidth="2.5" strokeLinecap="round" />
           <line x1="50" y1="52" x2="50" y2="74" stroke="#6B7280" strokeWidth="1.5" />
@@ -120,7 +131,7 @@ export default function IndustriesSection() {
         <svg viewBox="0 0 100 100" className="w-20 h-20 transition-transform duration-500 group-hover:scale-110">
           <defs>
             <linearGradient id="grad-corporate" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#FF2B2B" />
+              <stop offset="0%" stopColor="#C9A66B" />
               <stop offset="100%" stopColor="#333333" />
             </linearGradient>
           </defs>
@@ -131,14 +142,14 @@ export default function IndustriesSection() {
           <line x1="28" y1="35" x2="34" y2="35" stroke="#6B7280" strokeWidth="2" />
           <line x1="28" y1="45" x2="34" y2="45" stroke="#6B7280" strokeWidth="2" />
           <line x1="28" y1="55" x2="34" y2="55" stroke="#6B7280" strokeWidth="2" />
-          <line x1="56" y1="25" x2="64" y2="25" stroke="#FF2B2B" strokeWidth="2" />
+          <line x1="56" y1="25" x2="64" y2="25" stroke="#C9A66B" strokeWidth="2" />
           <line x1="56" y1="35" x2="64" y2="35" stroke="#6B7280" strokeWidth="2" />
           <line x1="56" y1="45" x2="64" y2="45" stroke="#6B7280" strokeWidth="2" />
           <line x1="56" y1="55" x2="64" y2="55" stroke="#6B7280" strokeWidth="2" />
           <line x1="56" y1="65" x2="64" y2="65" stroke="#6B7280" strokeWidth="2" />
           {/* Line Chart showing growth overlay */}
-          <path d="M12 70 L30 52 L54 62 L82 35" fill="none" stroke="#FF2B2B" strokeWidth="2.5" strokeLinecap="round" />
-          <circle cx="82" cy="35" r="4.5" fill="#FF2B2B" />
+          <path d="M12 70 L30 52 L54 62 L82 35" fill="none" stroke="#C9A66B" strokeWidth="2.5" strokeLinecap="round" />
+          <circle cx="82" cy="35" r="4.5" fill="#C9A66B" />
         </svg>
       )
     },
@@ -150,7 +161,7 @@ export default function IndustriesSection() {
         <svg viewBox="0 0 100 100" className="w-20 h-20 transition-transform duration-500 group-hover:scale-110">
           <defs>
             <linearGradient id="grad-ecommerce" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#FF2B2B" />
+              <stop offset="0%" stopColor="#C9A66B" />
               <stop offset="100%" stopColor="#111111" />
             </linearGradient>
           </defs>
@@ -159,8 +170,8 @@ export default function IndustriesSection() {
           <circle cx="42" cy="74" r="7" fill="none" stroke="url(#grad-ecommerce)" strokeWidth="2.5" />
           <circle cx="72" cy="74" r="7" fill="none" stroke="url(#grad-ecommerce)" strokeWidth="2.5" />
           {/* Growth graph inside cart */}
-          <path d="M42 50 L54 38 L68 44 L80 28" fill="none" stroke="#FF2B2B" strokeWidth="2" strokeLinecap="round" />
-          <polygon points="80,28 75,32 78,27" fill="#FF2B2B" />
+          <path d="M42 50 L54 38 L68 44 L80 28" fill="none" stroke="#C9A66B" strokeWidth="2" strokeLinecap="round" />
+          <polygon points="80,28 75,32 78,27" fill="#C9A66B" />
         </svg>
       )
     },
@@ -172,7 +183,7 @@ export default function IndustriesSection() {
         <svg viewBox="0 0 100 100" className="w-20 h-20 transition-transform duration-500 group-hover:scale-110">
           <defs>
             <linearGradient id="grad-realestate" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#FF2B2B" />
+              <stop offset="0%" stopColor="#C9A66B" />
               <stop offset="100%" stopColor="#333333" />
             </linearGradient>
           </defs>
@@ -186,8 +197,8 @@ export default function IndustriesSection() {
           <rect x="28" y="38" width="10" height="10" rx="1" fill="none" stroke="#6B7280" strokeWidth="1.5" />
           <rect x="52" y="38" width="10" height="10" rx="1" fill="none" stroke="#6B7280" strokeWidth="1.5" />
           {/* Location Pin */}
-          <path d="M72 16 C66 16, 62 20, 62 26 C62 34, 72 43, 72 43 C72 43, 82 34, 82 26 C82 20, 78 16, 72 16 Z" fill="none" stroke="#FF2B2B" strokeWidth="2" />
-          <circle cx="72" cy="25" r="3.5" fill="#FF2B2B" />
+          <path d="M72 16 C66 16, 62 20, 62 26 C62 34, 72 43, 72 43 C72 43, 82 34, 82 26 C82 20, 78 16, 72 16 Z" fill="none" stroke="#C9A66B" strokeWidth="2" />
+          <circle cx="72" cy="25" r="3.5" fill="#C9A66B" />
         </svg>
       )
     },
@@ -199,7 +210,7 @@ export default function IndustriesSection() {
         <svg viewBox="0 0 100 100" className="w-20 h-20 transition-transform duration-500 group-hover:scale-110">
           <defs>
             <linearGradient id="grad-auto" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#FF2B2B" />
+              <stop offset="0%" stopColor="#C9A66B" />
               <stop offset="100%" stopColor="#111111" />
             </linearGradient>
           </defs>
@@ -209,20 +220,18 @@ export default function IndustriesSection() {
           <circle cx="28" cy="66" r="8.5" fill="none" stroke="url(#grad-auto)" strokeWidth="2.5" />
           <circle cx="70" cy="66" r="8.5" fill="none" stroke="url(#grad-auto)" strokeWidth="2.5" />
           {/* Wheel spokes */}
-          <line x1="28" y1="57.5" x2="28" y2="74.5" stroke="#FF2B2B" strokeWidth="1.5" />
-          <line x1="19.5" y1="66" x2="36.5" y2="66" stroke="#FF2B2B" strokeWidth="1.5" />
-          <line x1="70" y1="57.5" x2="70" y2="74.5" stroke="#FF2B2B" strokeWidth="1.5" />
-          <line x1="61.5" y1="66" x2="78.5" y2="66" stroke="#FF2B2B" strokeWidth="1.5" />
+          <line x1="28" y1="57.5" x2="28" y2="74.5" stroke="#C9A66B" strokeWidth="1.5" />
+          <line x1="19.5" y1="66" x2="36.5" y2="66" stroke="#C9A66B" strokeWidth="1.5" />
+          <line x1="70" y1="57.5" x2="70" y2="74.5" stroke="#C9A66B" strokeWidth="1.5" />
+          <line x1="61.5" y1="66" x2="78.5" y2="66" stroke="#C9A66B" strokeWidth="1.5" />
           {/* Speed wave/grow dashboard */}
           <path d="M50 22 C38 22, 32 30, 32 30" fill="none" stroke="#6B7280" strokeWidth="1.5" strokeLinecap="round" />
-          <path d="M50 22 C62 22, 68 30, 68 30" fill="none" stroke="#FF2B2B" strokeWidth="1.5" strokeLinecap="round" />
-          <line x1="50" y1="30" x2="55" y2="24" stroke="#FF2B2B" strokeWidth="2" strokeLinecap="round" />
+          <path d="M50 22 C62 22, 68 30, 68 30" fill="none" stroke="#C9A66B" strokeWidth="1.5" strokeLinecap="round" />
+          <line x1="50" y1="30" x2="55" y2="24" stroke="#C9A66B" strokeWidth="2" strokeLinecap="round" />
         </svg>
       )
     }
   ];
-
-
 
   return (
     <section id="industries" className="py-24 bg-white relative overflow-hidden border-t border-black/[0.03]">
@@ -234,7 +243,7 @@ export default function IndustriesSection() {
         }}
       />
       <div className="absolute top-1/4 left-0 w-96 h-96 bg-[var(--color-accent)]/5 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-[#FF2B2B]/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-[var(--color-accent)]/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 space-y-20">
         
@@ -244,11 +253,11 @@ export default function IndustriesSection() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center space-x-2 bg-[#FF2B2B]/5 px-4 py-1.5 rounded-full border border-[#FF2B2B]/10"
+            transition={{ duration: isMobile ? 0 : 0.5 }}
+            className="inline-flex items-center space-x-2 bg-[var(--color-accent)]/5 px-4 py-1.5 rounded-full border border-[var(--color-accent)]/10"
           >
-            <span className="w-2 h-2 rounded-full bg-[#FF2B2B]" />
-            <span className="text-xs font-bold tracking-wider uppercase text-[#FF2B2B] font-sans">
+            <span className="w-2 h-2 rounded-full bg-[var(--color-accent)]" />
+            <span className="text-xs font-bold tracking-wider uppercase text-[var(--color-accent)] font-sans">
               Market Adaptability
             </span>
           </motion.div>
@@ -257,7 +266,7 @@ export default function IndustriesSection() {
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: isMobile ? 0 : 0.6, delay: isMobile ? 0 : 0.1 }}
             className="font-sans text-3xl md:text-5xl font-black tracking-tight text-[#111111]"
           >
             Industries We Serve
@@ -267,7 +276,7 @@ export default function IndustriesSection() {
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: isMobile ? 0 : 0.6, delay: isMobile ? 0 : 0.2 }}
             className="text-[#6B7280] text-sm md:text-base leading-relaxed max-w-2xl mx-auto font-sans"
           >
             We help businesses across diverse industries grow their online presence, generate quality leads, and increase revenue through strategic digital marketing.
@@ -282,21 +291,21 @@ export default function IndustriesSection() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.05 }}
+              transition={{ duration: isMobile ? 0 : 0.5, delay: isMobile ? 0 : idx * 0.05 }}
               whileHover={{ y: -6, transition: { duration: 0.2 } }}
-              className="group bg-white border border-black/[0.04] p-6 md:p-8 rounded-2xl flex flex-col justify-between hover:border-[#FF2B2B]/30 hover:shadow-[0_12px_30px_rgba(255,43,43,0.03)] transition-all duration-300 relative overflow-hidden"
+              className="group bg-white border border-black/[0.04] p-6 md:p-8 rounded-2xl flex flex-col justify-between hover:border-[var(--color-accent)]/30 hover:shadow-[0_12px_30px_rgba(201,166,107,0.03)] transition-all duration-300 relative overflow-hidden"
             >
               {/* Top border decoration on hover */}
-              <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-[#FF2B2B] to-[#111] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-[var(--color-accent)] to-[#111] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               
               <div className="space-y-6">
                 {/* SVG Illustration Container */}
-                <div className="w-20 h-20 rounded-2xl bg-[#FAF8F5] border border-black/[0.02] flex items-center justify-center group-hover:bg-[#FF2B2B]/5 transition-colors duration-300">
+                <div className="w-20 h-20 rounded-2xl bg-[#FAF8F5] border border-black/[0.02] flex items-center justify-center group-hover:bg-[var(--color-accent)]/5 transition-colors duration-300">
                   {item.svg}
                 </div>
 
                 <div className="space-y-3">
-                  <h3 className="font-sans font-bold text-lg text-[#111111] group-hover:text-[#FF2B2B] transition-colors duration-300">
+                  <h3 className="font-sans font-bold text-lg text-[#111111] group-hover:text-[var(--color-accent)] transition-colors duration-300">
                     {item.title}
                   </h3>
                   <p className="text-xs text-[#6B7280] leading-relaxed">
@@ -309,7 +318,7 @@ export default function IndustriesSection() {
               <div className="mt-6 pt-4 border-t border-black/[0.03] space-y-1.5">
                 {item.features.map((feature, fIdx) => (
                   <div key={fIdx} className="flex items-center space-x-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#FF2B2B] flex-shrink-0" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)] flex-shrink-0" />
                     <span className="text-[10px] font-semibold text-[#111111]/80 uppercase tracking-wider">{feature}</span>
                   </div>
                 ))}
@@ -318,23 +327,21 @@ export default function IndustriesSection() {
           ))}
         </div>
 
-
-
         {/* Call to Action Banner Card */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: isMobile ? 0 : 0.7 }}
           className="relative rounded-3xl bg-[#111111] p-8 md:p-16 overflow-hidden text-center shadow-2xl border border-white/[0.04]"
         >
           {/* Subtle Background Glow Rings */}
-          <div className="absolute -top-20 -left-20 w-80 h-80 rounded-full border border-[#FF2B2B]/10 opacity-30 pointer-events-none" />
+          <div className="absolute -top-20 -left-20 w-80 h-80 rounded-full border border-[var(--color-accent)]/10 opacity-30 pointer-events-none" />
           <div className="absolute -bottom-20 -right-20 w-80 h-80 rounded-full border border-white/5 opacity-30 pointer-events-none" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-radial from-[#FF2B2B]/10 via-transparent to-transparent opacity-40 pointer-events-none blur-3xl" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-radial from-[var(--color-accent)]/10 via-transparent to-transparent opacity-40 pointer-events-none blur-3xl" />
 
           <div className="max-w-2xl mx-auto space-y-6 relative z-10">
-            <span className="text-[10px] font-bold uppercase tracking-widest text-[#FF2B2B] bg-[#FF2B2B]/10 px-4 py-1.5 rounded-full border border-[#FF2B2B]/20">
+            <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--color-accent)] bg-[var(--color-accent)]/10 px-4 py-1.5 rounded-full border border-[var(--color-accent)]/20">
               Boost Your Conversions
             </span>
 
@@ -349,7 +356,7 @@ export default function IndustriesSection() {
             <div className="pt-4">
               <Link
                 href="#contact"
-                className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-[#FF2B2B] text-white text-xs font-bold uppercase tracking-wider hover:bg-white hover:text-[#111111] transition-all duration-300 shadow-lg"
+                className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-[var(--color-accent)] text-[#111111] text-xs font-bold uppercase tracking-wider hover:bg-white hover:text-[#111111] transition-all duration-300 shadow-lg"
               >
                 Get Free Consultation
                 <ArrowRight className="ml-2 w-4 h-4" />

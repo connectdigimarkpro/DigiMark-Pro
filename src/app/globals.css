@@ -118,3 +118,97 @@ html.lenis body {
   pointer-events: none;
 }
 
+/* Tactile noise overlay background style */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  content: "";
+  opacity: 0.035;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAAD/EQttAAAAGFBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAs9i74AAAAB3RSTlMAoJDA0ODw0B9JdwAAAABJREFUKM9jYGBgkJBgYGBUYGBgcGZgYHAHYlCGA6cMBo4YDKwCDKwCbCAJFiwSsEoIE+V5qPI8VHgOCXkeEvLcJeS5ScgzmIEMAG39CDEm1oNsAAAAAElFTkSuQmCC");
+}
+
+/* Mobile Performance Optimizations */
+@media (max-width: 768px) {
+  /* Disable heavy background animation paths & huge blurry filters on mobile */
+  .animate-float-slow,
+  .animate-float-medium {
+    animation: none !important;
+    transform: none !important;
+    display: none !important;
+  }
+  
+  /* Disable heavy grid line animations on mobile to limit layout recalculations */
+  .animate-grid-fade {
+    animation: none !important;
+    opacity: 0.15 !important;
+  }
+
+  /* Make above-the-fold elements paint instantly at full opacity on mobile layout */
+  .animate-hero-fade {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Reduced Motion Optimization */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    background-attachment: initial !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
+  
+  .animate-float-slow,
+  .animate-float-medium,
+  .animate-grid-fade {
+    animation: none !important;
+  }
+
+  .animate-hero-fade {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Premium CSS fade-in animation for above-the-fold LCP elements */
+@keyframes hero-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-hero-fade {
+  animation: hero-fade-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.delay-100 {
+  animation-delay: 100ms;
+}
+.delay-200 {
+  animation-delay: 200ms;
+}
+.delay-300 {
+  animation-delay: 300ms;
+}
+.delay-400 {
+  animation-delay: 400ms;
+}
+

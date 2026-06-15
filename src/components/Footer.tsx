@@ -19,7 +19,7 @@ export default function Footer() {
         {/* Brand Column */}
         <div className="md:col-span-2 space-y-6">
           <Link href="/#home" className="inline-block transition-transform duration-300 hover:scale-[1.02]">
-            <Logo heightClassName="h-12 md:h-16" />
+            <Logo heightClassName="h-20 md:h-24" />
           </Link>
           <p className="text-sm text-[#6B7280] max-w-sm leading-relaxed">
             Where Growth Meets Innovation. We help premium brands scale through strategic branding, custom web development, and growth-focused marketing.
@@ -30,10 +30,10 @@ export default function Footer() {
               href="https://www.linkedin.com/company/digimark-pro25/posts/?feedView=all"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-9 h-9 rounded-full bg-black/[0.02] hover:bg-[#111111] hover:text-[#FAF8F5] text-[#6B7280] flex items-center justify-center transition-all duration-300 border border-black/[0.03]"
+              className="w-10 h-10 rounded-full bg-[#0077B5] text-[#FFFFFF] flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-[0_4px_12px_rgba(0,119,181,0.15)] hover:shadow-[0_6px_16px_rgba(0,119,181,0.3)]"
               aria-label="LinkedIn"
             >
-              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <svg className="w-4.5 h-4.5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/>
               </svg>
             </a>
@@ -41,10 +41,10 @@ export default function Footer() {
               href="https://www.instagram.com/digimark.pro_/"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-9 h-9 rounded-full bg-black/[0.02] hover:bg-[#111111] hover:text-[#FAF8F5] text-[#6B7280] flex items-center justify-center transition-all duration-300 border border-black/[0.03]"
+              className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#F58529] via-[#DD2A7B] to-[#8134AF] text-[#FFFFFF] flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-[0_4px_12px_rgba(221,42,123,0.15)] hover:shadow-[0_6px_16px_rgba(221,42,123,0.3)]"
               aria-label="Instagram"
             >
-              <svg className="w-4 h-4 fill-none stroke-current" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <svg className="w-4.5 h-4.5 fill-none stroke-current" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
                 <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
@@ -52,19 +52,19 @@ export default function Footer() {
             </a>
             <a
               href="mailto:connect.digimarkpro@gmail.com"
-              className="w-9 h-9 rounded-full bg-black/[0.02] hover:bg-[#111111] hover:text-[#FAF8F5] text-[#6B7280] flex items-center justify-center transition-all duration-300 border border-black/[0.03]"
+              className="w-10 h-10 rounded-full bg-[#EA4335] text-[#FFFFFF] flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-[0_4px_12px_rgba(234,67,53,0.15)] hover:shadow-[0_6px_16px_rgba(234,67,53,0.3)]"
               aria-label="Email"
             >
-              <Mail size={16} />
+              <Mail size={18} />
             </a>
             <a
               href="https://wa.me/919056290628"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-9 h-9 rounded-full bg-black/[0.02] hover:bg-[#111111] hover:text-[#FAF8F5] text-[#6B7280] flex items-center justify-center transition-all duration-300 border border-black/[0.03]"
+              className="w-10 h-10 rounded-full bg-[#25D366] text-[#FFFFFF] flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-[0_4px_12px_rgba(37,211,102,0.15)] hover:shadow-[0_6px_16px_rgba(37,211,102,0.3)]"
               aria-label="WhatsApp"
             >
-              <MessageSquare size={16} />
+              <MessageSquare size={18} />
             </a>
           </div>
         </div>

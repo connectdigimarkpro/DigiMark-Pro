@@ -1,4 +1,4 @@
-"use client";
+import Image from "next/image";
 
 interface LogoProps {
   className?: string;
@@ -8,14 +8,14 @@ interface LogoProps {
 export default function Logo({ className = "", heightClassName = "h-9" }: LogoProps) {
   return (
     <div className={`flex items-center ${className}`}>
-      <img
+      <Image
         src="/logo.webp"
         alt="DigiMark Pro Logo"
-        className={`${heightClassName} w-auto object-contain mix-blend-multiply select-none pointer-events-none`}
-        onError={(e) => {
-          // Fallback if image fails to load
-          e.currentTarget.style.display = "none";
-        }}
+        width={180}
+        height={50}
+        priority
+        style={{ width: "auto", aspectRatio: "180/50" }}
+        className={`${heightClassName} object-contain mix-blend-multiply select-none pointer-events-none`}
       />
     </div>
   );

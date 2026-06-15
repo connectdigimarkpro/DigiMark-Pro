@@ -154,7 +154,8 @@ export default async function CaseStudy({ params }: Props) {
                   alt={`${project.title} Logo`}
                   width={120}
                   height={64}
-                  className="h-16 w-auto object-contain select-none pointer-events-none mix-blend-multiply"
+                  style={{ width: "auto" }}
+                  className="h-16 object-contain select-none pointer-events-none mix-blend-multiply"
                 />
               </div>
             )}

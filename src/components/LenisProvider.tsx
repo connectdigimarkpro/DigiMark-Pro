@@ -2,6 +2,9 @@
 
 import { useEffect, useRef } from "react";
 import Lenis from "lenis";
+import dynamic from "next/dynamic";
+
+const CustomCursor = dynamic(() => import("@/components/CustomCursor"), { ssr: false });
 
 export default function LenisProvider({ children }: { children: React.ReactNode }) {
   const lenisRef = useRef<Lenis | null>(null);
@@ -19,12 +22,13 @@ export default function LenisProvider({ children }: { children: React.ReactNode 
 
     lenisRef.current = lenis;
 
+    let rafId: number;
     function raf(time: number) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf);
+    rafId = requestAnimationFrame(raf);
 
     // Global scroll links listener to work nicely with Lenis
     const handleAnchorClick = (e: MouseEvent) => {
@@ -47,9 +51,15 @@ export default function LenisProvider({ children }: { children: React.ReactNode 
 
     return () => {
       lenis.destroy();
+      cancelAnimationFrame(rafId);
       document.removeEventListener("click", handleAnchorClick);
     };
   }, []);
 
-  return <>{children}</>;
+  return (
+    <>
+      <CustomCursor />
+      {children}
+    </>
+  );
 }

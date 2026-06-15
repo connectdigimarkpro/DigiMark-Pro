@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export default function CustomCursor() {
   const [isVisible, setIsVisible] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [cursorText, setCursorText] = useState("");
+  const isVisibleRef = useRef(false);
 
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
@@ -26,14 +27,19 @@ export default function CustomCursor() {
     const moveCursor = (e: MouseEvent) => {
       cursorX.set(e.clientX);
       cursorY.set(e.clientY);
-      if (!isVisible) setIsVisible(true);
+      if (!isVisibleRef.current) {
+        isVisibleRef.current = true;
+        setIsVisible(true);
+      }
     };
 
     const handleMouseLeave = () => {
+      isVisibleRef.current = false;
       setIsVisible(false);
     };
 
     const handleMouseEnter = () => {
+      isVisibleRef.current = true;
       setIsVisible(true);
     };
 
@@ -67,7 +73,7 @@ export default function CustomCursor() {
       document.removeEventListener("mouseenter", handleMouseEnter);
       window.removeEventListener("mouseover", handleMouseOver);
     };
-  }, [cursorX, cursorY, isVisible]);
+  }, [cursorX, cursorY]);
 
   if (!isVisible) return null;
 
