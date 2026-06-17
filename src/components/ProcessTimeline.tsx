@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import useIsMobile from "@/components/useIsMobile";
 import { motion } from "framer-motion";
 
 const processSteps = [
@@ -37,15 +37,7 @@ const processSteps = [
 ];
 
 export default function ProcessTimeline() {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const media = window.matchMedia("(max-width: 768px)");
-    setIsMobile(media.matches);
-    const listener = () => setIsMobile(media.matches);
-    media.addEventListener("change", listener);
-    return () => media.removeEventListener("change", listener);
-  }, []);
+  const isMobile = useIsMobile();
 
   return (
     <div className="max-w-4xl mx-auto relative pl-6 md:pl-12 border-l border-black/[0.06] space-y-12">

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Lenis from "lenis";
 import dynamic from "next/dynamic";
 
@@ -8,9 +8,34 @@ const CustomCursor = dynamic(() => import("@/components/CustomCursor"), { ssr: f
 
 export default function LenisProvider({ children }: { children: React.ReactNode }) {
   const lenisRef = useRef<Lenis | null>(null);
+  const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
-    // Disable smooth scroll on mobile if touch performance is poor, or keep it enabled with low multiplier
+    // Only enable smooth scroll on desktop (fine pointer) to save mobile TBT
+    const mediaQuery = window.matchMedia("(pointer: fine)");
+    setIsDesktop(mediaQuery.matches);
+    
+    if (!mediaQuery.matches) {
+      // Setup simple anchor click handler for mobile native smooth scroll
+      const handleAnchorClick = (e: MouseEvent) => {
+        const target = e.target as HTMLElement;
+        const anchor = target.closest("a");
+        
+        if (anchor && anchor.hash && anchor.origin === window.location.origin) {
+          const targetElement = document.querySelector(anchor.hash);
+          if (targetElement) {
+            e.preventDefault();
+            targetElement.scrollIntoView({ behavior: "smooth" });
+          }
+        }
+      };
+
+      document.addEventListener("click", handleAnchorClick);
+      return () => {
+        document.removeEventListener("click", handleAnchorClick);
+      };
+    }
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -58,7 +83,7 @@ export default function LenisProvider({ children }: { children: React.ReactNode 
 
   return (
     <>
-      <CustomCursor />
+      {isDesktop && <CustomCursor />}
       {children}
     </>
   );

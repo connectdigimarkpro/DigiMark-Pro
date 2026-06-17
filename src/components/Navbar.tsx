@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import Logo from "@/components/Logo";
 
@@ -41,14 +40,13 @@ export default function Navbar() {
       <header
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           scrolled
-            ? "bg-[#FAF8F5]/80 backdrop-blur-md border-b border-black/[0.04] py-4 shadow-[0_2px_20px_-10px_rgba(17,17,17,0.05)]"
-            : "bg-transparent py-6 border-b border-transparent"
+            ? "bg-[#FAF8F5]/80 backdrop-blur-md border-b border-black/[0.04] py-3 sm:py-4 shadow-[0_2px_20px_-10px_rgba(17,17,17,0.05)]"
+            : "bg-transparent py-4 sm:py-6 border-b border-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/#home" className="flex items-center group transition-transform duration-300 hover:scale-[1.02]">
-            <Logo heightClassName="h-16 md:h-22" />
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 md:px-12 flex items-center justify-between">
+          <Link href="/#home" className="flex items-center -ml-1 sm:-ml-2 md:-ml-6 lg:-ml-8 group transition-transform duration-300 hover:scale-[1.02]">
+            <Logo heightClassName="h-[60px] sm:h-[72px] md:h-[88px]" />
           </Link>
 
           {/* Desktop Navigation */}
@@ -80,7 +78,7 @@ export default function Navbar() {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="text-[#111111] p-1 focus:outline-none"
+              className="text-[#111111] p-2 -mr-2 focus:outline-none"
               aria-label="Toggle Menu"
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -90,52 +88,38 @@ export default function Navbar() {
       </header>
 
       {/* Mobile Navigation Drawer */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="fixed inset-0 top-[96px] z-30 bg-[#FAF8F5] border-t border-black/[0.04] px-6 py-10 md:hidden flex flex-col justify-between"
-          >
-            <nav className="flex flex-col space-y-6">
-              {navLinks.map((link, idx) => (
-                <motion.div
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: idx * 0.05 }}
-                  key={link.label}
-                >
-                  <Link
-                    href={link.href}
-                    onClick={handleLinkClick}
-                    className="font-sans text-2xl font-bold text-[#111111] hover:text-[var(--color-accent)] transition-colors block"
-                  >
-                    {link.label}
-                  </Link>
-                </motion.div>
-              ))}
-            </nav>
-
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="mt-auto"
-            >
+      <div
+        className={`fixed inset-0 top-[72px] sm:top-[84px] z-30 bg-[#FAF8F5] border-t border-black/[0.04] px-4 sm:px-6 py-8 md:hidden flex flex-col justify-between transition-all duration-300 ease-in-out ${
+          mobileMenuOpen
+            ? "translate-y-0 opacity-100 pointer-events-auto"
+            : "-translate-y-5 opacity-0 pointer-events-none"
+        }`}
+      >
+        <nav className="flex flex-col space-y-5">
+          {navLinks.map((link) => (
+            <div key={link.label}>
               <Link
-                href="/#contact"
+                href={link.href}
                 onClick={handleLinkClick}
-                className="w-full inline-flex items-center justify-center py-4 rounded-xl bg-[#111111] text-[#FAF8F5] font-semibold text-sm uppercase tracking-wider hover:bg-[var(--color-accent)] hover:text-[#111111] transition-all duration-300"
+                className="font-sans text-xl sm:text-2xl font-bold text-[#111111] hover:text-[var(--color-accent)] transition-colors block"
               >
-                Book Consultation
-                <ArrowUpRight className="ml-1 w-4 h-4" />
+                {link.label}
               </Link>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            </div>
+          ))}
+        </nav>
+
+        <div className="mt-auto">
+          <Link
+            href="/#contact"
+            onClick={handleLinkClick}
+            className="w-full inline-flex items-center justify-center py-4 rounded-xl bg-[#111111] text-[#FAF8F5] font-semibold text-sm uppercase tracking-wider hover:bg-[var(--color-accent)] hover:text-[#111111] transition-all duration-300"
+          >
+            Book Consultation
+            <ArrowUpRight className="ml-1 w-4 h-4" />
+          </Link>
+        </div>
+      </div>
     </>
   );
 }

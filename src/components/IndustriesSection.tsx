@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import useIsMobile from "@/components/useIsMobile";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
@@ -13,15 +13,7 @@ interface Industry {
 }
 
 export default function IndustriesSection() {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const media = window.matchMedia("(max-width: 768px)");
-    setIsMobile(media.matches);
-    const listener = () => setIsMobile(media.matches);
-    media.addEventListener("change", listener);
-    return () => media.removeEventListener("change", listener);
-  }, []);
+  const isMobile = useIsMobile();
 
   const industries: Industry[] = [
     {
@@ -350,7 +342,7 @@ export default function IndustriesSection() {
             </h3>
 
             <p className="text-gray-400 text-sm md:text-base leading-relaxed">
-              Let's create a custom marketing strategy for your industry.
+              Let&apos;s create a custom marketing strategy for your industry.
             </p>
 
             <div className="pt-4">

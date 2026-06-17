@@ -176,7 +176,7 @@ export default function ContactForm() {
     ];
 
     return (
-      <div className="flex items-center justify-between max-w-md mx-auto mb-10 relative">
+      <div className="flex items-center justify-between max-w-md mx-auto mb-8 sm:mb-10 relative px-1">
         <div className="absolute top-1/2 left-0 right-0 h-[2px] bg-black/[0.05] -translate-y-1/2 z-0" />
         {stepsList.map((s) => {
           const isActive = step === s.stepNum;
@@ -258,7 +258,7 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="bg-white border border-black/[0.04] rounded-2xl p-6 md:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.02)] relative overflow-hidden">
+    <div className="bg-white border border-black/[0.04] rounded-2xl p-5 sm:p-6 md:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.02)] relative overflow-hidden">
       
       {/* Step Indicators */}
       {renderStepsProgress()}
@@ -312,7 +312,7 @@ export default function ContactForm() {
             <span className="text-[10px] font-bold uppercase tracking-widest text-[#111111] block">
               2. Select Appointment Date
             </span>
-            <div className="grid grid-cols-4 sm:grid-cols-7 gap-2">
+            <div className="grid grid-cols-3 sm:grid-cols-7 gap-2">
               {availableDates.map((date, idx) => {
                 const isSelected = selectedDate && date.toDateString() === selectedDate.toDateString();
                 const isTodayDate = date.toDateString() === new Date().toDateString();
@@ -403,7 +403,7 @@ export default function ContactForm() {
             4. Enter Personal & Business Details
           </span>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
             {/* Name */}
             <div className="space-y-2">
               <label htmlFor="name" className="text-xs font-bold uppercase tracking-widest text-[#111111] flex items-center gap-1.5">
@@ -487,11 +487,11 @@ export default function ContactForm() {
           </div>
 
           {/* Navigation Action Buttons */}
-          <div className="flex gap-4 pt-4">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4">
             <button
               type="button"
               onClick={() => setStep(1)}
-              className="w-1/3 inline-flex items-center justify-center py-4 rounded-xl border border-black/[0.08] hover:bg-black/[0.02] text-[#111111] font-semibold text-xs uppercase tracking-widest transition-all duration-300"
+              className="w-full sm:w-1/3 inline-flex items-center justify-center py-4 rounded-xl border border-black/[0.08] hover:bg-black/[0.02] text-[#111111] font-semibold text-xs uppercase tracking-widest transition-all duration-300"
             >
               <ArrowLeft className="mr-2 w-4 h-4" />
               Back
@@ -499,7 +499,7 @@ export default function ContactForm() {
             <button
               type="button"
               onClick={handleNextStep2}
-              className="w-2/3 inline-flex items-center justify-center py-4 rounded-xl bg-[#111111] hover:bg-[var(--color-accent)] text-[#FAF8F5] hover:text-[#111111] font-semibold text-xs uppercase tracking-widest transition-all duration-300 group shadow-sm"
+              className="w-full sm:w-2/3 inline-flex items-center justify-center py-4 rounded-xl bg-[#111111] hover:bg-[var(--color-accent)] text-[#FAF8F5] hover:text-[#111111] font-semibold text-xs uppercase tracking-widest transition-all duration-300 group shadow-sm"
             >
               Review Schedule
               <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" />
@@ -558,12 +558,12 @@ export default function ContactForm() {
           </div>
 
           {/* Action buttons */}
-          <div className="flex gap-4 pt-2">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2">
             <button
               type="button"
               onClick={() => setStep(2)}
               disabled={status === "submitting"}
-              className="w-1/3 inline-flex items-center justify-center py-4 rounded-xl border border-black/[0.08] hover:bg-black/[0.02] text-[#111111] font-semibold text-xs uppercase tracking-widest transition-all duration-300 disabled:opacity-50"
+              className="w-full sm:w-1/3 inline-flex items-center justify-center py-4 rounded-xl border border-black/[0.08] hover:bg-black/[0.02] text-[#111111] font-semibold text-xs uppercase tracking-widest transition-all duration-300 disabled:opacity-50"
             >
               <ArrowLeft className="mr-2 w-4 h-4" />
               Back
@@ -572,7 +572,7 @@ export default function ContactForm() {
               type="button"
               onClick={onSubmit}
               disabled={status === "submitting"}
-              className="w-2/3 inline-flex items-center justify-center py-4 rounded-xl bg-[#111111] hover:bg-[var(--color-accent)] text-[#FAF8F5] hover:text-[#111111] font-semibold text-xs uppercase tracking-widest transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed group shadow-sm"
+              className="w-full sm:w-2/3 inline-flex items-center justify-center py-4 rounded-xl bg-[#111111] hover:bg-[var(--color-accent)] text-[#FAF8F5] hover:text-[#111111] font-semibold text-xs uppercase tracking-widest transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed group shadow-sm"
             >
               {status === "submitting" ? (
                 <>

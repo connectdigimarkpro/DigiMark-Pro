@@ -154,6 +154,14 @@ html.lenis body {
     opacity: 1 !important;
     transform: none !important;
   }
+
+  .noise-overlay {
+    opacity: 0.015;
+  }
+
+  #scroll-progress {
+    height: 2px;
+  }
 }
 
 /* Reduced Motion Optimization */

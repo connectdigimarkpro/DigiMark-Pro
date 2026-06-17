@@ -21,6 +21,8 @@ interface ProjectData {
   nextSlug: string;
   nextTitle: string;
   logoSrc?: string | null;
+  logoWidth?: number;
+  logoHeight?: number;
   socialLink?: string | null;
   showcaseImg1?: string;
   showcaseImg2?: string;
@@ -51,6 +53,8 @@ const projects: Record<string, ProjectData> = {
     nextSlug: "digimark-pro",
     nextTitle: "DigiMark Pro Brand Identity",
     logoSrc: "/seren-logo.webp",
+    logoWidth: 260,
+    logoHeight: 106,
     socialLink: "https://www.instagram.com/sereneducation/",
     showcaseImg1: "/showcase_seren_1.webp",
     showcaseImg2: "/showcase_seren_2.webp"
@@ -79,6 +83,8 @@ const projects: Record<string, ProjectData> = {
     nextSlug: "web-development",
     nextTitle: "Website Development Projects",
     logoSrc: "/logo.webp",
+    logoWidth: 837,
+    logoHeight: 583,
     socialLink: "https://www.instagram.com/digimark.pro_/",
     showcaseImg1: "/showcase_digimark_1.webp",
     showcaseImg2: "/showcase_digimark_2.webp"
@@ -107,6 +113,8 @@ const projects: Record<string, ProjectData> = {
     nextSlug: "seren-education",
     nextTitle: "Seren Education Consultants",
     logoSrc: null,
+    logoWidth: undefined,
+    logoHeight: undefined,
     socialLink: null,
     showcaseImg1: "/showcase_web_1.webp",
     showcaseImg2: "/showcase_web_2.webp"
@@ -134,8 +142,8 @@ export default async function CaseStudy({ params }: Props) {
       <NoiseBackground />
       <Navbar />
 
-      <main className="min-h-screen pt-32 pb-24 px-6 md:px-12 bg-[var(--color-background)]">
-        <div className="max-w-5xl mx-auto space-y-16">
+      <main className="min-h-screen pt-28 sm:pt-32 pb-20 sm:pb-24 px-4 sm:px-6 md:px-12 bg-[var(--color-background)]">
+        <div className="max-w-5xl mx-auto space-y-12 sm:space-y-16">
           {/* Header Link */}
           <Link
             href="/#work"
@@ -146,39 +154,39 @@ export default async function CaseStudy({ params }: Props) {
           </Link>
 
           {/* Project Header */}
-          <div className="space-y-6">
+          <div className="space-y-5 sm:space-y-6">
             {project.logoSrc && (
-              <div className="mb-4">
+              <div className="mb-3 sm:mb-4">
                 <Image
                   src={project.logoSrc}
                   alt={`${project.title} Logo`}
-                  width={120}
-                  height={64}
-                  style={{ width: "auto" }}
-                  className="h-16 object-contain select-none pointer-events-none mix-blend-multiply"
+                  width={project.logoWidth}
+                  height={project.logoHeight}
+                  priority
+                  className="h-14 sm:h-16 w-auto object-contain select-none pointer-events-none mix-blend-multiply"
                 />
               </div>
             )}
             <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-accent)]">
               {project.category}
             </span>
-            <h1 className="font-sans text-4xl md:text-6xl font-bold tracking-tight text-[#111111] leading-tight">
+            <h1 className="font-sans text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-[#111111] leading-tight">
               {project.title}
             </h1>
-            <p className="font-sans text-lg md:text-2xl font-medium text-[#6B7280] leading-relaxed max-w-3xl">
+            <p className="font-sans text-base sm:text-lg md:text-2xl font-medium text-[#6B7280] leading-relaxed max-w-3xl">
               {project.tagline}
             </p>
           </div>
 
           {/* Large Abstract Key Metric Card */}
-          <div className="bg-white border border-black/[0.04] rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 shadow-[0_8px_30px_rgb(0,0,0,0.01)]">
+          <div className="bg-white border border-black/[0.04] rounded-2xl p-6 sm:p-8 md:p-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 sm:gap-8 shadow-[0_8px_30px_rgb(0,0,0,0.01)]">
             <div className="space-y-2 max-w-md">
               <span className="text-xs font-bold uppercase tracking-widest text-[#6B7280]">Key Milestone</span>
               <p className="text-sm text-[#111111] leading-relaxed">
                 This project represents a benchmark in our ability to merge high-end visual design with rigorous business growth goals.
               </p>
             </div>
-            <div className="border-l border-black/[0.08] pl-8 md:pl-16 py-2">
+            <div className="border-l-0 md:border-l border-t md:border-t-0 border-black/[0.08] pl-0 md:pl-16 pt-6 md:pt-0 py-2 md:py-2 w-full md:w-auto">
               <span className="block text-5xl md:text-7xl font-bold tracking-tight text-[var(--color-accent)]">
                 {project.statNumber}
               </span>
@@ -189,8 +197,8 @@ export default async function CaseStudy({ params }: Props) {
           </div>
 
           {/* Body Columns */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pt-8">
-            <div className="md:col-span-2 space-y-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 sm:gap-12 pt-6 sm:pt-8">
+            <div className="md:col-span-2 space-y-10 sm:space-y-12">
               {/* Overview */}
               <div className="space-y-4">
                 <h3 className="text-xs font-bold uppercase tracking-widest text-[#111111] flex items-center">
@@ -226,7 +234,7 @@ export default async function CaseStudy({ params }: Props) {
             </div>
 
             {/* Sidebar info */}
-            <div className="space-y-12">
+            <div className="space-y-10 sm:space-y-12">
               {project.socialLink && (
                 <div className="space-y-4 bg-white border border-black/[0.04] p-6 md:p-8 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.01)] hover:border-[var(--color-accent)] transition-all duration-300">
                   <h3 className="text-xs font-bold uppercase tracking-widest text-[#111111]">
@@ -278,13 +286,13 @@ export default async function CaseStudy({ params }: Props) {
           </div>
 
           {/* Premium Abstract Mockup Showcase Gallery */}
-          <div className="space-y-4 pt-12">
+          <div className="space-y-4 pt-10 sm:pt-12">
             <h3 className="text-xs font-bold uppercase tracking-widest text-[#111111]">
               Visual Showcase
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
               {/* Card 1 */}
-              <div className="h-80 md:h-[400px] rounded-2xl border border-black/[0.04] flex items-end p-8 relative overflow-hidden group shadow-[0_4px_20px_rgba(0,0,0,0.01)] bg-white">
+              <div className="h-72 sm:h-80 md:h-[400px] rounded-2xl border border-black/[0.04] flex items-end p-6 sm:p-8 relative overflow-hidden group shadow-[0_4px_20px_rgba(0,0,0,0.01)] bg-white">
                 {project.showcaseImg1 && (
                   <Image
                     src={project.showcaseImg1}
@@ -305,7 +313,7 @@ export default async function CaseStudy({ params }: Props) {
               </div>
 
               {/* Card 2 */}
-              <div className="h-80 md:h-[400px] rounded-2xl border border-black/[0.04] flex items-end p-8 relative overflow-hidden group shadow-[0_4px_20px_rgba(0,0,0,0.01)] bg-white">
+              <div className="h-72 sm:h-80 md:h-[400px] rounded-2xl border border-black/[0.04] flex items-end p-6 sm:p-8 relative overflow-hidden group shadow-[0_4px_20px_rgba(0,0,0,0.01)] bg-white">
                 {project.showcaseImg2 && (
                   <Image
                     src={project.showcaseImg2}
@@ -328,7 +336,7 @@ export default async function CaseStudy({ params }: Props) {
           </div>
 
           {/* Project Footer Navigation */}
-          <div className="border-t border-black/[0.08] pt-12 flex items-center justify-between">
+          <div className="border-t border-black/[0.08] pt-10 sm:pt-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <Link
               href="/#work"
               className="text-sm font-semibold text-[#6B7280] hover:text-[#111111] transition-colors"

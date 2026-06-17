@@ -24,14 +24,16 @@ import {
 
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import NoiseBackground from "@/components/NoiseBackground";
 import GridPattern from "@/components/GridPattern";
-import FeaturedWork from "@/components/FeaturedWork";
-import ProcessTimeline from "@/components/ProcessTimeline";
-import ContactForm from "@/components/ContactForm";
-import TickerMarquee from "@/components/TickerMarquee";
-import IndustriesSection from "@/components/IndustriesSection";
+import dynamic from "next/dynamic";
+
+const FeaturedWork = dynamic(() => import("@/components/FeaturedWork"));
+const ProcessTimeline = dynamic(() => import("@/components/ProcessTimeline"));
+const ContactForm = dynamic(() => import("@/components/ContactForm"));
+const TickerMarquee = dynamic(() => import("@/components/TickerMarquee"));
+const IndustriesSection = dynamic(() => import("@/components/IndustriesSection"));
+const Footer = dynamic(() => import("@/components/Footer"));
 
 // Services data
 const servicesData = [
@@ -109,15 +111,15 @@ export default function Home() {
       <Navbar />
 
       {/* Hero Section */}
-      <section id="home" className="min-h-screen relative flex items-center justify-center pt-24 overflow-hidden">
+      <section id="home" className="min-h-[100svh] relative flex items-center justify-center pt-20 sm:pt-24 overflow-hidden">
         <GridPattern />
         
         {/* Scroll Progress Bar */}
         <div id="scroll-progress" style={{ transform: "scaleX(0)" }} className="fixed top-0 left-0 right-0 h-1 bg-[var(--color-accent)] z-50 origin-left" />
 
-        <div className="max-w-7xl mx-auto px-6 md:px-12 text-center space-y-8 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 text-center space-y-6 sm:space-y-8 relative z-10">
           <div
-            className="inline-flex items-center space-x-2 bg-white border border-black/[0.04] px-4 py-1.5 rounded-full shadow-sm animate-hero-fade"
+            className="inline-flex items-center space-x-2 bg-white border border-black/[0.04] px-4 py-1.5 rounded-full shadow-sm animate-hero-fade max-w-full"
           >
             <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" />
             <span className="text-xs font-semibold tracking-wider uppercase text-[#111111] font-sans">
@@ -126,7 +128,7 @@ export default function Home() {
           </div>
 
           <h1
-            className="font-sans text-4xl sm:text-6xl md:text-8xl font-black tracking-tight text-[#111111] leading-[1.05] animate-hero-fade"
+            className="font-sans text-[clamp(2.35rem,8vw,6rem)] md:text-8xl font-black tracking-tight text-[#111111] leading-[1.02] sm:leading-[1.05] animate-hero-fade"
           >
             Building Brands.<br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#111111] via-[var(--color-accent)] to-[#111111]">
@@ -136,13 +138,13 @@ export default function Home() {
           </h1>
 
           <p
-            className="font-sans text-lg md:text-xl text-[#6B7280] max-w-2xl mx-auto leading-relaxed animate-hero-fade"
+            className="font-sans text-base sm:text-lg md:text-xl text-[#6B7280] max-w-2xl mx-auto leading-relaxed animate-hero-fade"
           >
             DigiMark Pro helps businesses scale through custom high-fidelity branding, bespoke website development, and organic growth-focused marketing.
           </p>
 
           <div
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 animate-hero-fade"
+            className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 pt-4 animate-hero-fade"
           >
             <Link
               href="#work"
@@ -160,7 +162,7 @@ export default function Home() {
 
           {/* Trust Ticker / Capabilities */}
           <div
-            className="pt-20 border-t border-black/[0.04] grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto animate-hero-fade"
+            className="pt-12 sm:pt-20 border-t border-black/[0.04] grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 max-w-5xl mx-auto animate-hero-fade"
           >
             {[
               { text: "Branding", count: "01", icon: <Sparkles className="w-4 h-4 text-[var(--color-accent)] flex-shrink-0" /> },
@@ -168,7 +170,7 @@ export default function Home() {
               { text: "Digital Marketing", count: "03", icon: <TrendingUp className="w-4 h-4 text-[var(--color-accent)] flex-shrink-0" /> },
               { text: "Growth Solutions", count: "04", icon: <Target className="w-4 h-4 text-[var(--color-accent)] flex-shrink-0" /> },
             ].map((cap, idx) => (
-              <div key={idx} className="flex items-center justify-center space-x-2.5 py-4 px-5 rounded-xl bg-white/50 backdrop-blur-sm border border-black/[0.04] shadow-sm hover:border-[var(--color-accent)]/50 transition-colors duration-300">
+                <div key={idx} className="flex items-center justify-center space-x-2.5 py-3 sm:py-4 px-3 sm:px-5 rounded-xl bg-white/50 backdrop-blur-sm border border-black/[0.04] shadow-sm hover:border-[var(--color-accent)]/50 transition-colors duration-300">
                 <span className="text-[10px] font-black text-[#6b7280]">{cap.count}</span>
                 {cap.icon}
                 <span className="text-xs font-black uppercase tracking-widest text-[#111111]">{cap.text}</span>
@@ -181,9 +183,9 @@ export default function Home() {
       <FeaturedWork />
 
       {/* Services Section */}
-      <section id="services" className="py-24 px-6 md:px-12 bg-[#FAF8F5] relative">
-        <div className="max-w-7xl mx-auto space-y-16">
-          <div className="text-center max-w-xl mx-auto space-y-4">
+      <section id="services" className="py-16 sm:py-24 px-4 sm:px-6 md:px-12 bg-[#FAF8F5] relative">
+        <div className="max-w-7xl mx-auto space-y-12 sm:space-y-16">
+          <div className="text-center max-w-xl mx-auto space-y-4 px-1 sm:px-0">
             <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-accent)]">Our Expertise</span>
             <h2 className="font-sans text-3xl md:text-5xl font-bold tracking-tight text-[#111111]">
               Growth-Focused Capabilities
@@ -194,13 +196,13 @@ export default function Home() {
           </div>
 
           {/* Bento Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
             {servicesData.map((service, idx) => {
               const isLarge = idx === 0 || idx === 3 || idx === 4;
               return (
                 <div
                   key={idx}
-                  className={`bg-white border border-black/[0.04] rounded-2xl p-8 hover:border-[var(--color-accent)] transition-all duration-500 shadow-[0_4px_30px_rgba(0,0,0,0.01)] group relative overflow-hidden flex flex-col justify-between ${
+                  className={`bg-white border border-black/[0.04] rounded-2xl p-6 sm:p-8 hover:border-[var(--color-accent)] transition-all duration-500 shadow-[0_4px_30px_rgba(0,0,0,0.01)] group relative overflow-hidden flex flex-col justify-between ${
                     isLarge ? "md:col-span-2 md:p-10" : "col-span-1"
                   }`}
                 >
@@ -211,7 +213,7 @@ export default function Home() {
                     }}
                   />
                   {isLarge ? (
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center z-10 w-full h-full">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-center z-10 w-full h-full">
                       <div className="space-y-6 flex flex-col justify-between h-full">
                         <div className="space-y-4">
                           <div className="w-12 h-12 rounded-xl bg-[#FAF8F5] flex items-center justify-center">
@@ -237,7 +239,7 @@ export default function Home() {
                         </div>
                       </div>
 
-                      <div className="relative w-full aspect-[4/3] md:h-full rounded-xl overflow-hidden border border-black/[0.04] bg-white group-hover:scale-[1.01] transition-transform duration-500 shadow-sm">
+                      <div className="relative w-full aspect-[4/3] md:h-full rounded-xl overflow-hidden border border-black/[0.04] bg-white group-hover:scale-[1.01] transition-transform duration-500 shadow-sm order-first md:order-none">
                         <Image
                           src={service.serviceImg}
                           alt={service.title}
@@ -295,19 +297,19 @@ export default function Home() {
       <TickerMarquee />
 
       {/* Why DigiMark Pro Section */}
-      <section className="py-24 px-6 md:px-12 bg-white relative">
-        <div className="max-w-7xl mx-auto space-y-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 md:px-12 bg-white relative">
+        <div className="max-w-7xl mx-auto space-y-12 sm:space-y-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 items-center">
+            <div className="space-y-5 sm:space-y-6 min-w-0">
               <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-accent)]">Why Partner With Us</span>
-              <h2 className="font-sans text-3xl md:text-5xl font-bold tracking-tight text-[#111111]">
+              <h2 className="font-sans text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#111111] break-words">
                 Unfair Growth Advantages.
               </h2>
-              <p className="text-[#6B7280] leading-relaxed text-sm">
+              <p className="text-[#6B7280] leading-relaxed text-sm max-w-xl">
                 We avoid generic agency frameworks. DigiMark Pro operates at the intersection of luxury brand aesthetics, top-tier React engineering, and growth-focused marketing metrics.
               </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 pt-4 min-w-0">
                 {[
                   { title: "CREATIVE STRATEGY", desc: "Data-driven campaigns designed to maximize engagement and brand visibility." },
                   { title: "MODERN BRANDING", desc: "Building sleek, premium brand identities that create market authority." },
@@ -316,13 +318,13 @@ export default function Home() {
                   { title: "GROWTH-FOCUSED", desc: "Every strategy is optimized for measurable reach, leads, and conversions." },
                   { title: "PERSONAL SUPPORT", desc: "Transparent communication with continuous strategic collaboration." },
                 ].map((item, idx) => (
-                  <div key={idx} className="flex items-start space-x-3 bg-[#FAF8F5] border border-black/[0.03] p-3 rounded-xl hover:border-[var(--color-accent)] transition-colors duration-300">
+                  <div key={idx} className="flex items-start gap-3 bg-[#FAF8F5] border border-black/[0.03] p-3 rounded-xl hover:border-[var(--color-accent)] transition-colors duration-300 min-w-0">
                     <div className="w-5 h-5 rounded-full bg-[var(--color-accent)]/10 text-[var(--color-accent)] flex items-center justify-center flex-shrink-0 mt-0.5">
                       <CheckCircle className="w-3 h-3" />
                     </div>
-                    <div>
-                      <h4 className="text-[11px] font-bold text-[#111111] uppercase tracking-wider">{item.title}</h4>
-                      <p className="text-[10px] text-[#6B7280] mt-0.5 leading-relaxed">{item.desc}</p>
+                    <div className="min-w-0">
+                      <h4 className="text-[11px] font-bold text-[#111111] uppercase tracking-wider break-words">{item.title}</h4>
+                      <p className="text-[10px] text-[#6B7280] mt-0.5 leading-relaxed break-words">{item.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -330,7 +332,7 @@ export default function Home() {
             </div>
 
             {/* Growth Funnel Illustration */}
-            <div className="relative rounded-3xl bg-[#FAF8F5] border border-black/[0.04] p-6 flex items-center justify-center overflow-hidden hover:border-[var(--color-accent)] transition-all duration-500 shadow-[0_4px_30px_rgba(0,0,0,0.01)] group aspect-video md:aspect-auto md:h-full min-h-[300px]">
+            <div className="relative rounded-3xl bg-[#FAF8F5] border border-black/[0.04] p-5 sm:p-6 flex items-center justify-center overflow-hidden hover:border-[var(--color-accent)] transition-all duration-500 shadow-[0_4px_30px_rgba(0,0,0,0.01)] group aspect-[4/3] sm:aspect-video md:aspect-auto md:h-full min-h-[240px] sm:min-h-[300px] max-w-full">
               <div className="absolute inset-0 opacity-[0.02] group-hover:scale-105 transition-transform duration-700"
                 style={{
                   backgroundImage: "radial-gradient(#111 1.5px, transparent 1.5px)",
@@ -340,18 +342,17 @@ export default function Home() {
               <Image
                 src="/growth-path.webp"
                 alt="Connect, Grow, Succeed Growth Funnel"
-                width={420}
-                height={300}
-                style={{ height: "auto" }}
-                className="w-full max-w-[420px] object-contain mix-blend-multiply select-none pointer-events-none group-hover:scale-[1.02] transition-transform duration-500"
+                width={1024}
+                height={668}
+                className="w-full h-auto max-w-[360px] sm:max-w-[420px] object-contain mix-blend-multiply select-none pointer-events-none group-hover:scale-[1.02] transition-transform duration-500"
               />
             </div>
           </div>
 
           {/* Statistics Cards */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-12 border-t border-black/[0.04]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 pt-8 sm:pt-12 border-t border-black/[0.04]">
             {statsData.map((stat, idx) => (
-              <div key={idx} className="bg-[#FAF8F5] border border-black/[0.04] p-6 rounded-2xl text-center space-y-2 hover:border-[var(--color-accent)] transition-all duration-300">
+              <div key={idx} className="bg-[#FAF8F5] border border-black/[0.04] p-5 sm:p-6 rounded-2xl text-center space-y-2 hover:border-[var(--color-accent)] transition-all duration-300 min-w-0">
                 <span className="block text-3xl md:text-4xl font-bold tracking-tight text-[#111111]">
                   {stat.value}
                 </span>
@@ -365,8 +366,8 @@ export default function Home() {
       </section>
 
       {/* Process Section */}
-      <section id="process" className="py-24 px-6 md:px-12 bg-[#FAF8F5] relative">
-        <div className="max-w-7xl mx-auto space-y-16">
+      <section id="process" className="py-16 sm:py-24 px-4 sm:px-6 md:px-12 bg-[#FAF8F5] relative">
+        <div className="max-w-7xl mx-auto space-y-12 sm:space-y-16">
           <div className="text-center max-w-xl mx-auto space-y-4">
             <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-accent)]">Our Workflow</span>
             <h2 className="font-sans text-3xl md:text-5xl font-bold tracking-tight text-[#111111]">
@@ -382,8 +383,8 @@ export default function Home() {
       </section>
 
       {/* Technology Section */}
-      <section className="py-24 px-6 md:px-12 bg-white relative">
-        <div className="max-w-7xl mx-auto space-y-16">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 md:px-12 bg-white relative">
+        <div className="max-w-7xl mx-auto space-y-12 sm:space-y-16">
           <div className="text-center max-w-xl mx-auto space-y-4">
             <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-accent)]">Growth Stack</span>
             <h2 className="font-sans text-3xl md:text-5xl font-bold tracking-tight text-[#111111]">
@@ -394,7 +395,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-6 max-w-5xl mx-auto">
             {techStack.map((tech, idx) => (
               <div
                 key={idx}
@@ -413,8 +414,8 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-24 px-6 md:px-12 bg-[#FAF8F5] relative">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+      <section id="about" className="py-16 sm:py-24 px-4 sm:px-6 md:px-12 bg-[#FAF8F5] relative">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-16 items-center">
           <div className="space-y-6">
             <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-accent)]">About DigiMark Pro</span>
             <h2 className="font-sans text-3xl md:text-5xl font-bold tracking-tight text-[#111111] leading-tight">
@@ -458,8 +459,8 @@ export default function Home() {
       </section>
 
       {/* QR Code Section */}
-      <section className="py-24 px-6 md:px-12 bg-white relative">
-        <div className="max-w-5xl mx-auto bg-[#FAF8F5] border border-black/[0.04] rounded-3xl p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-12 shadow-[0_8px_40px_-10px_rgba(17,17,17,0.02)]">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 md:px-12 bg-white relative">
+        <div className="max-w-5xl mx-auto bg-[#FAF8F5] border border-black/[0.04] rounded-3xl p-6 sm:p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8 sm:gap-12 shadow-[0_8px_40px_-10px_rgba(17,17,17,0.02)]">
           <div className="space-y-6 max-w-lg text-center md:text-left">
             <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-accent)]">Digital Showcase</span>
             <h2 className="font-sans text-3xl md:text-4xl font-bold tracking-tight text-[#111111]">
@@ -482,7 +483,7 @@ export default function Home() {
           </div>
 
           {/* SVG QR Code */}
-          <div className="bg-white border border-black/[0.05] p-6 rounded-2xl shadow-md relative group flex flex-col items-center">
+          <div className="bg-white border border-black/[0.05] p-5 sm:p-6 rounded-2xl shadow-md relative group flex flex-col items-center">
             <div className="w-48 h-48 flex items-center justify-center text-[#111111]">
               <QrCode size={160} strokeWidth={1.2} className="group-hover:scale-[1.02] transition-transform duration-300" />
             </div>
@@ -492,8 +493,8 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-24 px-6 md:px-12 bg-[#FAF8F5] relative">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
+      <section id="contact" className="py-16 sm:py-24 px-4 sm:px-6 md:px-12 bg-[#FAF8F5] relative">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-16">
           <div className="space-y-8">
             <div className="space-y-4">
               <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-accent)]">Start A Project</span>

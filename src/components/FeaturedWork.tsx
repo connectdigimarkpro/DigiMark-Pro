@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import useIsMobile from "@/components/useIsMobile";
 
 // Portfolio Projects data
 const projectsData = [
@@ -17,6 +18,8 @@ const projectsData = [
     stats: "+140% Inquiries",
     imageBg: "bg-radial from-[#C9A66B]/20 to-[#FAF8F5]",
     logoSrc: "/seren-logo.webp",
+    logoWidth: 260,
+    logoHeight: 106,
     projectImg: "/project_seren.webp",
   },
   {
@@ -28,6 +31,8 @@ const projectsData = [
     stats: "20K+ Impressions",
     imageBg: "bg-radial from-[#111111]/10 to-[#FAF8F5]",
     logoSrc: "/logo.webp",
+    logoWidth: 837,
+    logoHeight: 583,
     projectImg: "/project_digimark.webp",
   },
   {
@@ -39,21 +44,15 @@ const projectsData = [
     stats: "<0.4s Load Time",
     imageBg: "bg-radial from-[#C9A66B]/10 to-[#FAF8F5]",
     logoSrc: null,
+    logoWidth: undefined,
+    logoHeight: undefined,
     projectImg: "/project_web_dev.webp",
   }
 ];
 
 export default function FeaturedWork() {
   const [activeFilter, setActiveFilter] = useState("All");
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const media = window.matchMedia("(max-width: 768px)");
-    setIsMobile(media.matches);
-    const listener = () => setIsMobile(media.matches);
-    media.addEventListener("change", listener);
-    return () => media.removeEventListener("change", listener);
-  }, []);
+  const isMobile = useIsMobile();
 
   const filteredProjects = activeFilter === "All"
     ? projectsData
@@ -118,7 +117,6 @@ export default function FeaturedWork() {
                     alt={proj.title}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    priority={idx === 0}
                     className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out select-none pointer-events-none"
                   />
                   {proj.logoSrc && (
@@ -126,10 +124,9 @@ export default function FeaturedWork() {
                       <Image
                         src={proj.logoSrc}
                         alt={`${proj.title} Logo`}
-                        width={60}
-                        height={24}
-                        style={{ width: "auto" }}
-                        className="h-6 object-contain select-none pointer-events-none mix-blend-multiply"
+                        width={proj.logoWidth}
+                        height={proj.logoHeight}
+                        className="h-6 w-auto object-contain select-none pointer-events-none mix-blend-multiply"
                       />
                     </div>
                   )}

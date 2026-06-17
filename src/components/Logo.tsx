@@ -11,11 +11,10 @@ export default function Logo({ className = "", heightClassName = "h-9" }: LogoPr
       <Image
         src="/logo.webp"
         alt="DigiMark Pro Logo"
-        width={180}
-        height={50}
+        width={837}
+        height={583}
         priority
-        style={{ width: "auto", aspectRatio: "180/50" }}
-        className={`${heightClassName} object-contain mix-blend-multiply select-none pointer-events-none`}
+        className={`${heightClassName} w-auto object-contain mix-blend-multiply select-none pointer-events-none`}
       />
     </div>
   );
