@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import LenisProvider from "@/components/LenisProvider";
 import NoiseBackground from "@/components/NoiseBackground";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -65,7 +67,8 @@ export default function RootLayout({
     "image": "https://digimarkpro.in/logo.webp",
     "description": "Premium brand design, Next.js engineering, and growth strategies.",
     "url": "https://digimarkpro.in",
-    "telephone": "+919876543210",
+    "telephone": "+919646900628",
+
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "New Delhi",
@@ -90,6 +93,7 @@ export default function RootLayout({
         <LenisProvider>
           <NoiseBackground />
           {children}
+          <FloatingWhatsApp />
         </LenisProvider>
       </body>
     </html>

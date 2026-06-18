@@ -20,13 +20,15 @@ import {
   CalendarCheck,
   Building,
   User,
-  Mail
+  Mail,
+  Phone
 } from "lucide-react";
 
 // Schema for Step 2 validation
 const detailsSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
   email: z.string().email("Please enter a valid email address"),
+  phone: z.string().min(10, "Please enter a valid contact number (at least 10 digits)"),
   businessName: z.string().min(2, "Business name must be at least 2 characters"),
   message: z.string().min(10, "Project goals must be at least 10 characters"),
 });
@@ -81,6 +83,7 @@ export default function ContactForm() {
     defaultValues: {
       name: "",
       email: "",
+      phone: "",
       businessName: "",
       message: "",
     },
@@ -105,7 +108,7 @@ export default function ContactForm() {
 
   const handleNextStep2 = async () => {
     // Validate only Step 2 details fields
-    const isValid = await trigger(["name", "email", "businessName", "message"]);
+    const isValid = await trigger(["name", "email", "phone", "businessName", "message"]);
     if (isValid) {
       setStep(3);
     }
@@ -243,6 +246,7 @@ export default function ContactForm() {
             <div className="border-t border-black/[0.04] pt-3">
               <span className="block text-[8px] uppercase tracking-widest text-[#6B7280] font-bold">Client Contact</span>
               <span className="font-semibold text-[#111111]">{details.name} ({details.businessName})</span>
+              <span className="block text-[10px] text-[#6B7280] mt-0.5">{details.email} | {details.phone}</span>
             </div>
           </div>
         </div>
@@ -446,6 +450,27 @@ export default function ContactForm() {
           </div>
 
           <div className="grid grid-cols-1 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+            {/* Phone */}
+            <div className="space-y-2">
+              <label htmlFor="phone" className="text-xs font-bold uppercase tracking-widest text-[#111111] flex items-center gap-1.5">
+                <Phone size={12} className="opacity-50" />
+                Contact Number
+              </label>
+              <input
+                id="phone"
+                type="tel"
+                placeholder="+91 96469-00628"
+                {...register("phone")}
+                className={`w-full px-4 py-3 bg-[#FAF8F5] border rounded-xl text-sm transition-all focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)] ${
+                  errors.phone ? "border-red-300 focus:ring-red-400" : "border-black/[0.06] focus:border-[var(--color-accent)]"
+                }`}
+              />
+              {errors.phone && (
+                <p className="text-xs font-medium text-red-600">{errors.phone.message}</p>
+              )}
+            </div>
+
             {/* Business Name */}
             <div className="space-y-2">
               <label htmlFor="businessName" className="text-xs font-bold uppercase tracking-widest text-[#111111] flex items-center gap-1.5">
@@ -465,6 +490,7 @@ export default function ContactForm() {
                 <p className="text-xs font-medium text-red-600">{errors.businessName.message}</p>
               )}
             </div>
+          </div>
 
             {/* Message */}
             <div className="space-y-2">
@@ -544,6 +570,7 @@ export default function ContactForm() {
                 <div className="mt-2 space-y-1.5 text-xs text-[#111111]">
                   <p><span className="text-[#6B7280]">Name:</span> <span className="font-semibold">{getValues("name")}</span></p>
                   <p><span className="text-[#6B7280]">Email:</span> <span className="font-semibold">{getValues("email")}</span></p>
+                  <p><span className="text-[#6B7280]">Phone:</span> <span className="font-semibold">{getValues("phone")}</span></p>
                   <p><span className="text-[#6B7280]">Business:</span> <span className="font-semibold">{getValues("businessName")}</span></p>
                 </div>
               </div>

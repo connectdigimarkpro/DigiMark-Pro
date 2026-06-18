@@ -58,7 +58,7 @@ export default function Footer() {
               <Mail size={18} />
             </a>
             <a
-              href="https://wa.me/919056290628"
+              href="https://wa.me/919646900628"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-full bg-[#25D366] text-[#FFFFFF] flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-[0_4px_12px_rgba(37,211,102,0.15)] hover:shadow-[0_6px_16px_rgba(37,211,102,0.3)]"

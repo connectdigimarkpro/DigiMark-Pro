@@ -2,7 +2,7 @@
 
 import useIsMobile from "@/components/useIsMobile";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, PhoneCall, Mail } from "lucide-react";
 import Link from "next/link";
 
 interface Industry {
@@ -333,8 +333,9 @@ export default function IndustriesSection() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-radial from-[var(--color-accent)]/10 via-transparent to-transparent opacity-40 pointer-events-none blur-3xl" />
 
           <div className="max-w-2xl mx-auto space-y-6 relative z-10">
-            <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--color-accent)] bg-[var(--color-accent)]/10 px-4 py-1.5 rounded-full border border-[var(--color-accent)]/20">
-              Boost Your Conversions
+            <span className="inline-flex items-center gap-1.5 bg-[var(--color-accent)]/10 px-4 py-1.5 rounded-full border border-[var(--color-accent)]/20 text-[10px] font-bold uppercase tracking-widest text-[var(--color-accent)]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)] animate-pulse" />
+              <span>Boost Your Conversions</span>
             </span>
 
             <h3 className="font-sans text-3xl md:text-4xl font-extrabold tracking-tight text-white">
@@ -345,14 +346,61 @@ export default function IndustriesSection() {
               Let&apos;s create a custom marketing strategy for your industry.
             </p>
 
-            <div className="pt-4">
-              <Link
-                href="#contact"
-                className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-[var(--color-accent)] text-[#111111] text-xs font-bold uppercase tracking-wider hover:bg-white hover:text-[#111111] transition-all duration-300 shadow-lg"
-              >
-                Get Free Consultation
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </Link>
+            {/* CTA Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 max-w-2xl mx-auto pt-6 text-left">
+              {/* Card 1: Call Us */}
+              <div className="group bg-[#1A1A1A] border border-[#C9A14A]/10 rounded-[20px] p-5 sm:p-6 text-center space-y-4 transition-all duration-300 hover:border-[#C9A14A]/30 hover:shadow-[0_8px_24px_rgba(201,166,107,0.08)] flex flex-col justify-between items-center relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-b from-[#C9A14A]/2 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
+                <div className="space-y-3 flex flex-col items-center relative z-10">
+                  <div className="w-12 h-12 rounded-full bg-[#111111] border border-[#C9A14A]/20 flex items-center justify-center text-[#C9A14A] group-hover:scale-105 transition-transform duration-300 shadow-sm">
+                    <PhoneCall className="w-5 h-5" />
+                  </div>
+                  <div className="space-y-1">
+                    <h4 className="font-sans font-bold text-base text-white">Call Us</h4>
+                    <p className="text-gray-400 text-xs leading-relaxed max-w-[200px] mx-auto">
+                      Speak directly with our strategist for quick consultation.
+                    </p>
+                  </div>
+                  <div className="text-[#C9A14A] font-bold text-sm tracking-wider pt-1">
+                    +91 96469-00628
+                  </div>
+                </div>
+
+                <a
+                  href="tel:+919646900628"
+                  className="relative z-10 w-full inline-flex items-center justify-center px-4 py-2.5 rounded-lg bg-[#C9A14A] text-[#111111] text-[10px] font-bold uppercase tracking-wider hover:bg-white hover:text-[#111111] transition-all duration-300 shadow-sm font-sans font-semibold"
+                >
+                  Call Now
+                </a>
+              </div>
+
+              {/* Card 2: Email Us */}
+              <div className="group bg-[#1A1A1A] border border-[#C9A14A]/10 rounded-[20px] p-5 sm:p-6 text-center space-y-4 transition-all duration-300 hover:border-[#C9A14A]/30 hover:shadow-[0_8px_24px_rgba(201,166,107,0.08)] flex flex-col justify-between items-center relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-b from-[#C9A14A]/2 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
+                <div className="space-y-3 flex flex-col items-center relative z-10">
+                  <div className="w-12 h-12 rounded-full bg-[#111111] border border-[#C9A14A]/20 flex items-center justify-center text-[#C9A14A] group-hover:scale-105 transition-transform duration-300 shadow-sm">
+                    <Mail className="w-5 h-5" />
+                  </div>
+                  <div className="space-y-1">
+                    <h4 className="font-sans font-bold text-base text-white">Email Us</h4>
+                    <p className="text-gray-400 text-xs leading-relaxed max-w-[200px] mx-auto">
+                      Send details of your project for a scope review.
+                    </p>
+                  </div>
+                  <div className="text-[#C9A14A] font-semibold text-xs tracking-normal pt-1 break-all max-w-[220px] mx-auto">
+                    connect.digimarkpro@gmail.com
+                  </div>
+                </div>
+
+                <a
+                  href="mailto:connect.digimarkpro@gmail.com"
+                  className="relative z-10 w-full inline-flex items-center justify-center px-4 py-2.5 rounded-lg border border-[#C9A14A]/40 text-[#C9A14A] text-[10px] font-bold uppercase tracking-wider hover:bg-[#C9A14A] hover:text-[#111111] transition-all duration-300 shadow-sm font-sans font-semibold"
+                >
+                  Send Email
+                </a>
+              </div>
             </div>
           </div>
         </motion.div>

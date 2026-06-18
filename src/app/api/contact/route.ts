@@ -4,10 +4,10 @@ import { Resend } from "resend";
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, email, businessName, serviceRequired, date, timeSlot, message } = body;
+    const { name, email, phone, businessName, serviceRequired, date, timeSlot, message } = body;
 
     // Check for required fields
-    if (!name || !email || !businessName || !serviceRequired || !date || !timeSlot || !message) {
+    if (!name || !email || !phone || !businessName || !serviceRequired || !date || !timeSlot || !message) {
       return NextResponse.json(
         { error: "Missing required fields for appointment booking." },
         { status: 400 }
@@ -21,6 +21,7 @@ export async function POST(request: Request) {
       // and confetti without requiring an active key during development/testing.
       console.log("---- [MOCK APPOINTMENT BOOKING DISPATCH] ----");
       console.log(`From: ${name} <${email}>`);
+      console.log(`Phone: ${phone}`);
       console.log(`Company: ${businessName}`);
       console.log(`Service: ${serviceRequired}`);
       console.log(`Date: ${date}`);
@@ -39,7 +40,7 @@ export async function POST(request: Request) {
 
     const resend = new Resend(apiKey);
 
-    const data = await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: "DigiMark Pro Appointments <onboarding@resend.dev>", // Replace with verified domain in production
       to: ["connect.digimarkpro@gmail.com"], // Target address
       subject: `New Consultation Booked: ${serviceRequired} on ${date}`,
@@ -95,6 +96,12 @@ export async function POST(request: Request) {
                   </td>
                 </tr>
                 <tr>
+                  <td style="padding: 6px 0; font-size: 13px; color: #6B7280;">Contact Number</td>
+                  <td style="padding: 6px 0; font-size: 13px; font-weight: 600; color: #111111;">
+                    <a href="tel:${phone}" style="color: #111111; text-decoration: underline;">${phone}</a>
+                  </td>
+                </tr>
+                <tr>
                   <td style="padding: 6px 0; font-size: 13px; color: #6B7280;">Business Name</td>
                   <td style="padding: 6px 0; font-size: 13px; font-weight: 600; color: #111111;">${businessName}</td>
                 </tr>
@@ -118,6 +125,14 @@ export async function POST(request: Request) {
         </div>
       `,
     });
+
+    if (error) {
+      console.error("Resend email dispatch error:", error);
+      return NextResponse.json(
+        { error: error.message || "Failed to send email confirmation via Resend." },
+        { status: 400 }
+      );
+    }
 
     return NextResponse.json({ success: true, data });
   } catch (error: unknown) {
