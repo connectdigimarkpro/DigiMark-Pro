@@ -1,0 +1,245 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #FAF8F4;
+  --color-foreground: #111111;
+  --color-accent: #C9A66B;
+  --color-muted: #6B7280;
+  --color-border: rgba(17, 17, 17, 0.08);
+  --color-card: #FFFFFF;
+  
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Roboto Mono, monospace;
+
+  --animate-grid-fade: grid-fade 8s ease-in-out infinite alternate;
+  --animate-float-slow: float-slow 20s ease-in-out infinite;
+  --animate-float-medium: float-medium 15s ease-in-out infinite;
+  --animate-marquee: marquee 30s linear infinite;
+  --animate-gold-shine: gold-shine 6s linear infinite;
+
+  @keyframes grid-fade {
+    0% { opacity: 0.15; }
+    50% { opacity: 0.25; }
+    100% { opacity: 0.15; }
+  }
+  @keyframes float-slow {
+    0% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+    50% { transform: translateY(-30px) translateX(20px) rotate(180deg); }
+    100% { transform: translateY(0px) translateX(0px) rotate(360deg); }
+  }
+  @keyframes float-medium {
+    0% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+    50% { transform: translateY(20px) translateX(-30px) rotate(-180deg); }
+    100% { transform: translateY(0px) translateX(0px) rotate(-360deg); }
+  }
+  @keyframes marquee {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
+  }
+  @keyframes gold-shine {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+}
+
+:root {
+  --background: #FAF8F4;
+  --foreground: #111111;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scroll progress indicator */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--color-accent);
+  transform-origin: 0%;
+  z-index: 100;
+}
+
+/* Hide default cursor on desktop when custom cursor is active */
+@media (pointer: fine) {
+  .custom-cursor-active,
+  .custom-cursor-active * {
+    cursor: none !important;
+  }
+}
+
+/* Selection colors */
+::selection {
+  background-color: rgba(201, 166, 107, 0.2);
+  color: var(--color-foreground);
+}
+
+/* Custom scrollbar for premium feel */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FAF8F4;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(17, 17, 17, 0.15);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(17, 17, 17, 0.3);
+}
+
+/* Lenis smooth scroll styling */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overflow: clip;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Tactile noise overlay background style */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  content: "";
+  opacity: 0.035;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAAD/EQttAAAAGFBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAs9i74AAAAB3RSTlMAoJDA0ODw0B9JdwAAAABJREFUKM9jYGBgkJBgYGBUYGBgcGZgYHAHYlCGA6cMBo4YDKwCDKwCbCAJFiwSsEoIE+V5qPI8VHgOCXkeEvLcJeS5ScgzmIEMAG39CDEm1oNsAAAAAElFTkSuQmCC");
+}
+
+/* Mobile Performance Optimizations */
+@media (max-width: 768px) {
+  /* Disable heavy background animation paths & huge blurry filters on mobile */
+  .animate-float-slow,
+  .animate-float-medium {
+    animation: none !important;
+    transform: none !important;
+    display: none !important;
+  }
+  
+  /* Disable heavy grid line animations on mobile to limit layout recalculations */
+  .animate-grid-fade {
+    animation: none !important;
+    opacity: 0.15 !important;
+  }
+
+  /* Make above-the-fold elements paint instantly at full opacity on mobile layout */
+  .animate-hero-fade {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .noise-overlay {
+    opacity: 0.015;
+  }
+
+  #scroll-progress {
+    height: 2px;
+  }
+}
+
+/* Reduced Motion Optimization */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    background-attachment: initial !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
+  
+  .animate-float-slow,
+  .animate-float-medium,
+  .animate-grid-fade {
+    animation: none !important;
+  }
+
+  .animate-hero-fade {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Premium CSS fade-in animation for above-the-fold LCP elements */
+@keyframes hero-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-hero-fade {
+  animation: hero-fade-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.delay-100 {
+  animation-delay: 100ms;
+}
+.delay-200 {
+  animation-delay: 200ms;
+}
+.delay-300 {
+  animation-delay: 300ms;
+}
+.delay-400 {
+  animation-delay: 400ms;
+}
+
+.text-gold-gradient {
+  background: linear-gradient(
+    135deg,
+    #B38728 0%,
+    #FBF5B7 25%,
+    #DAAF37 50%,
+    #FBF5B7 75%,
+    #AA771C 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: gold-shine 8s ease infinite;
+}
+
