@@ -1,7 +1,11 @@
 @import "tailwindcss";
 
 @theme {
+<<<<<<< HEAD
   --color-background: #FAF8F4;
+=======
+  --color-background: #FAF8F5;
+>>>>>>> ad4664a9251c0a2b414fbe46b7d81e5cfaa740b8
   --color-foreground: #111111;
   --color-accent: #C9A66B;
   --color-muted: #6B7280;
@@ -15,7 +19,10 @@
   --animate-float-slow: float-slow 20s ease-in-out infinite;
   --animate-float-medium: float-medium 15s ease-in-out infinite;
   --animate-marquee: marquee 30s linear infinite;
+<<<<<<< HEAD
   --animate-gold-shine: gold-shine 6s linear infinite;
+=======
+>>>>>>> ad4664a9251c0a2b414fbe46b7d81e5cfaa740b8
 
   @keyframes grid-fade {
     0% { opacity: 0.15; }
@@ -36,6 +43,7 @@
     0% { transform: translate3d(0, 0, 0); }
     100% { transform: translate3d(-50%, 0, 0); }
   }
+<<<<<<< HEAD
   @keyframes gold-shine {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -45,6 +53,12 @@
 
 :root {
   --background: #FAF8F4;
+=======
+}
+
+:root {
+  --background: #FAF8F5;
+>>>>>>> ad4664a9251c0a2b414fbe46b7d81e5cfaa740b8
   --foreground: #111111;
 }
 
@@ -90,7 +104,11 @@ body {
 }
 
 ::-webkit-scrollbar-track {
+<<<<<<< HEAD
   background: #FAF8F4;
+=======
+  background: #FAF8F5;
+>>>>>>> ad4664a9251c0a2b414fbe46b7d81e5cfaa740b8
 }
 
 ::-webkit-scrollbar-thumb {
@@ -226,6 +244,7 @@ html.lenis body {
   animation-delay: 400ms;
 }
 
+<<<<<<< HEAD
 .text-gold-gradient {
   background: linear-gradient(
     135deg,
@@ -243,3 +262,5 @@ html.lenis body {
   animation: gold-shine 8s ease infinite;
 }
 
+=======
+>>>>>>> ad4664a9251c0a2b414fbe46b7d81e5cfaa740b8

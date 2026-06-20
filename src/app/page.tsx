@@ -26,7 +26,11 @@ import {
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import NoiseBackground from "@/components/NoiseBackground";
+<<<<<<< HEAD
 import Hero from "@/components/Hero";
+=======
+import GridPattern from "@/components/GridPattern";
+>>>>>>> ad4664a9251c0a2b414fbe46b7d81e5cfaa740b8
 import dynamic from "next/dynamic";
 
 const FeaturedWork = dynamic(() => import("@/components/FeaturedWork"));
@@ -72,14 +76,22 @@ const servicesData = [
     title: "SEO & GEO",
     description: "Search engine optimization and AI Search Engine Optimization (GEO) to dominate organic visibility.",
     tags: ["Search Optimization", "AI SEO (GEO)", "Keyword Research", "Local SEO"],
+<<<<<<< HEAD
     serviceImg: "/service-seo.png"
+=======
+    serviceImg: "/service_seo.webp"
+>>>>>>> ad4664a9251c0a2b414fbe46b7d81e5cfaa740b8
   },
   {
     icon: <Cpu className="w-8 h-8 text-[var(--color-accent)]" />,
     title: "AI-Enhanced Solutions",
     description: "Automating customer touchpoints and workflows with state-of-the-art intelligent tools and logic.",
     tags: ["AI Chatbots", "Marketing Automation", "AI Content Systems", "Smart Analytics"],
+<<<<<<< HEAD
     serviceImg: "/service:AI-Automation.png"
+=======
+    serviceImg: "/service_ai.webp"
+>>>>>>> ad4664a9251c0a2b414fbe46b7d81e5cfaa740b8
   }
 ];
 
@@ -113,7 +125,78 @@ export default function Home() {
       <Navbar />
 
       {/* Hero Section */}
+<<<<<<< HEAD
       <Hero />
+=======
+      <section id="home" className="min-h-[100svh] relative flex items-center justify-center pt-20 sm:pt-24 overflow-hidden">
+        <GridPattern />
+        
+        {/* Scroll Progress Bar */}
+        <div id="scroll-progress" style={{ transform: "scaleX(0)" }} className="fixed top-0 left-0 right-0 h-1 bg-[var(--color-accent)] z-50 origin-left" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 text-center space-y-6 sm:space-y-8 relative z-10">
+          <div
+            className="inline-flex items-center space-x-2 bg-white border border-black/[0.04] px-4 py-1.5 rounded-full shadow-sm animate-hero-fade max-w-full"
+          >
+            <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" />
+            <span className="text-xs font-semibold tracking-wider uppercase text-[#111111] font-sans">
+              Growth meets Innovation
+            </span>
+          </div>
+
+          <h1
+            className="font-sans text-[clamp(2.35rem,8vw,6rem)] md:text-8xl font-black tracking-tight text-[#111111] leading-[1.02] sm:leading-[1.05] animate-hero-fade"
+          >
+            Building Brands.<br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#111111] via-[var(--color-accent)] to-[#111111]">
+              Driving Growth.
+            </span><br />
+            Creating Experiences.
+          </h1>
+
+          <p
+            className="font-sans text-base sm:text-lg md:text-xl text-[#6B7280] max-w-2xl mx-auto leading-relaxed animate-hero-fade"
+          >
+            DigiMark Pro helps businesses scale through custom high-fidelity branding, bespoke website development, and organic growth-focused marketing.
+          </p>
+
+          <div
+            className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 pt-4 animate-hero-fade"
+          >
+            <Link
+              href="#work"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-full bg-[#111111] text-[#FAF8F5] text-xs font-bold uppercase tracking-wider hover:bg-[var(--color-accent)] hover:text-[#111111] transition-all duration-300 shadow-md"
+            >
+              View Work
+            </Link>
+            <Link
+              href="#contact"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-full border border-black/[0.08] bg-white/50 backdrop-blur-sm hover:bg-black/[0.02] text-[#111111] text-xs font-bold uppercase tracking-wider transition-all duration-300"
+            >
+              Book Consultation
+            </Link>
+          </div>
+
+          {/* Trust Ticker / Capabilities */}
+          <div
+            className="pt-12 sm:pt-20 border-t border-black/[0.04] grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 max-w-5xl mx-auto animate-hero-fade"
+          >
+            {[
+              { text: "Branding", count: "01", icon: <Sparkles className="w-4 h-4 text-[var(--color-accent)] flex-shrink-0" /> },
+              { text: "Web Development", count: "02", icon: <Code className="w-4 h-4 text-[var(--color-accent)] flex-shrink-0" /> },
+              { text: "Digital Marketing", count: "03", icon: <TrendingUp className="w-4 h-4 text-[var(--color-accent)] flex-shrink-0" /> },
+              { text: "Growth Solutions", count: "04", icon: <Target className="w-4 h-4 text-[var(--color-accent)] flex-shrink-0" /> },
+            ].map((cap, idx) => (
+                <div key={idx} className="flex items-center justify-center space-x-2.5 py-3 sm:py-4 px-3 sm:px-5 rounded-xl bg-white/50 backdrop-blur-sm border border-black/[0.04] shadow-sm hover:border-[var(--color-accent)]/50 transition-colors duration-300">
+                <span className="text-[10px] font-black text-[#6b7280]">{cap.count}</span>
+                {cap.icon}
+                <span className="text-xs font-black uppercase tracking-widest text-[#111111]">{cap.text}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+>>>>>>> ad4664a9251c0a2b414fbe46b7d81e5cfaa740b8
 
       <FeaturedWork />
 
@@ -301,6 +384,7 @@ export default function Home() {
       </section>
 
       {/* Process Section */}
+<<<<<<< HEAD
       <section id="process" className="py-24 px-4 sm:px-6 md:px-12 bg-[#FAF8F4] relative border-t border-black/[0.02]">
         <div className="max-w-7xl mx-auto space-y-16">
           <div className="text-center max-w-2xl mx-auto space-y-4">
@@ -311,6 +395,17 @@ export default function Home() {
             </h2>
             <p className="text-[#6B7280] text-sm sm:text-base leading-relaxed">
               Our process combines research, creativity, technology, and continuous optimization to build digital experiences that help businesses grow.
+=======
+      <section id="process" className="py-16 sm:py-24 px-4 sm:px-6 md:px-12 bg-[#FAF8F5] relative">
+        <div className="max-w-7xl mx-auto space-y-12 sm:space-y-16">
+          <div className="text-center max-w-xl mx-auto space-y-4">
+            <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-accent)]">Our Workflow</span>
+            <h2 className="font-sans text-3xl md:text-5xl font-bold tracking-tight text-[#111111]">
+              The Precision Engine
+            </h2>
+            <p className="text-[#6B7280] text-sm leading-relaxed">
+              We execute a strict five-phase growth pipeline to construct digital products that achieve scalable results.
+>>>>>>> ad4664a9251c0a2b414fbe46b7d81e5cfaa740b8
             </p>
           </div>
 
