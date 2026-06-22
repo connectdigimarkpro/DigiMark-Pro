@@ -1,28 +1,28 @@
 import Link from "next/link";
 import { 
-  ArrowUpRight, 
+  ArrowRight, 
+  Sparkles, 
   Code, 
   TrendingUp, 
-  Sparkles, 
-  ArrowRight,
+  MessageSquare, 
+  Search, 
+  Cpu, 
+  ArrowUpRight,
+  Globe,
+  CheckCircle,
   ShieldCheck,
   Zap,
-  Cpu,
-  CheckCircle,
   UserCheck,
   QrCode,
-  Search,
-  MessageSquare,
+  Phone,
+  Mail,
   Target,
   Megaphone,
   Share2,
   LineChart,
-  Mail,
   Palette,
-  FileText,
-  Phone
+  FileText
 } from "lucide-react";
-
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import NoiseBackground from "@/components/NoiseBackground";
@@ -30,12 +30,9 @@ import Hero from "@/components/Hero";
 import dynamic from "next/dynamic";
 
 const FeaturedWork = dynamic(() => import("@/components/FeaturedWork"));
-const ProcessTimeline = dynamic(() => import("@/components/ProcessTimeline"));
-const ContactForm = dynamic(() => import("@/components/ContactForm"));
 const TickerMarquee = dynamic(() => import("@/components/TickerMarquee"));
-const IndustriesSection = dynamic(() => import("@/components/IndustriesSection"));
+const ContactForm = dynamic(() => import("@/components/ContactForm"));
 const Footer = dynamic(() => import("@/components/Footer"));
-
 
 // Services data
 const servicesData = [
@@ -115,10 +112,22 @@ export default function Home() {
       {/* Hero Section */}
       <Hero />
 
-      <FeaturedWork />
+      {/* Selected Work Showcase */}
+      <div className="relative">
+        <FeaturedWork />
+        <div className="bg-[#FAF8F4] pb-16 text-center border-b border-black/[0.02]">
+          <Link 
+            href="/work" 
+            className="inline-flex items-center text-xs font-bold uppercase tracking-wider text-[#111111] hover:text-[var(--color-accent)] transition-colors group"
+          >
+            Explore Case Studies
+            <ArrowRight className="ml-1.5 w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+          </Link>
+        </div>
+      </div>
 
-      {/* Services Section */}
-      <section id="services" className="py-16 sm:py-24 px-4 sm:px-6 md:px-12 bg-[#FAF8F5] relative">
+      {/* Services Bento Grid Section */}
+      <section id="services" className="py-16 sm:py-24 px-4 sm:px-6 md:px-12 bg-white relative">
         <div className="max-w-7xl mx-auto space-y-12 sm:space-y-16">
           <div className="text-center max-w-xl mx-auto space-y-4 px-1 sm:px-0">
             <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-accent)]">Our Expertise</span>
@@ -224,10 +233,17 @@ export default function Home() {
               );
             })}
           </div>
+
+          <div className="text-center pt-8">
+            <Link 
+              href="/services" 
+              className="inline-flex items-center text-xs font-bold uppercase tracking-wider text-[#111111] hover:text-[var(--color-accent)] transition-colors group"
+            >
+              Explore Full Capabilities &nbsp; <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
+          </div>
         </div>
       </section>
-
-      <IndustriesSection />
 
       <TickerMarquee />
 
@@ -300,26 +316,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Process Section */}
-      <section id="process" className="py-24 px-4 sm:px-6 md:px-12 bg-[#FAF8F4] relative border-t border-black/[0.02]">
-        <div className="max-w-7xl mx-auto space-y-16">
-          <div className="text-center max-w-2xl mx-auto space-y-4">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#C9A66B]">✦ OUR PROCESS</span>
-            <h2 className="font-sans text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-[#111111] leading-tight">
-              From Strategy to Success.<br className="hidden sm:block" />
-              Every Step Designed for Growth.
-            </h2>
-            <p className="text-[#6B7280] text-sm sm:text-base leading-relaxed">
-              Our process combines research, creativity, technology, and continuous optimization to build digital experiences that help businesses grow.
-            </p>
-          </div>
-
-          <ProcessTimeline />
-        </div>
-      </section>
-
       {/* Technology Section */}
-      <section className="py-16 sm:py-24 px-4 sm:px-6 md:px-12 bg-white relative">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 md:px-12 bg-[#FAF8F5] border-t border-black/[0.02] relative">
         <div className="max-w-7xl mx-auto space-y-12 sm:space-y-16">
           <div className="text-center max-w-xl mx-auto space-y-4">
             <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-accent)]">Growth Stack</span>
@@ -335,9 +333,9 @@ export default function Home() {
             {techStack.map((tech, idx) => (
               <div
                 key={idx}
-                className="bg-[#FAF8F5] border border-black/[0.04] p-6 rounded-2xl flex flex-col items-center justify-center text-center space-y-3 hover:border-[var(--color-accent)] transition-all duration-300 shadow-[0_2px_10px_rgba(0,0,0,0.01)] group"
+                className="bg-white border border-black/[0.04] p-6 rounded-2xl flex flex-col items-center justify-center text-center space-y-3 hover:border-[var(--color-accent)] transition-all duration-300 shadow-[0_2px_10px_rgba(0,0,0,0.01)] group"
               >
-                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center border border-black/[0.03] transition-transform duration-300 group-hover:scale-105 shadow-sm">
+                <div className="w-10 h-10 rounded-full bg-[#FAF8F5] flex items-center justify-center border border-black/[0.03] transition-transform duration-300 group-hover:scale-105 shadow-sm">
                   {tech.icon}
                 </div>
                 <span className="text-xs font-bold tracking-wider text-[#111111] uppercase font-sans">
@@ -349,54 +347,99 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="py-16 sm:py-24 px-4 sm:px-6 md:px-12 bg-[#FAF8F5] relative">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-16 items-center">
-          <div className="space-y-6">
-            <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-accent)]">About DigiMark Pro</span>
-            <h2 className="font-sans text-3xl md:text-5xl font-bold tracking-tight text-[#111111] leading-tight">
-              Where growth strategist meets React architect.
+      {/* Global Reach Preview Section with 3D Globe picture */}
+      <section className="py-16 sm:py-24 px-4 sm:px-6 md:px-12 bg-white border-t border-black/[0.02] relative">
+        <div className="max-w-5xl mx-auto bg-[#FAF8F5] border border-black/[0.04] rounded-3xl p-6 sm:p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 shadow-[0_8px_40px_-10px_rgba(17,17,17,0.02)]">
+          <div className="space-y-6 max-w-lg">
+            <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-accent)]">Global Presence</span>
+            <h2 className="font-sans text-3xl md:text-4xl font-bold tracking-tight text-[#111111]">
+              Open for International Clients
             </h2>
-            <p className="text-[#6B7280] text-sm leading-relaxed">
-              Founded on the belief that premium design and robust coding are the greatest amplifiers of business growth, DigiMark Pro is a boutique agency built to bridge the gap between creative studios and engineering houses.
+            <p className="text-sm text-[#6B7280] leading-relaxed font-medium">
+              We sync seamlessly across primary global timezones—operating in US (EST/PST), UK, EU, UAE, Singapore, and Australia. Explore our interactive delivery map.
             </p>
+            <div className="pt-2">
+              <Link 
+                href="/global" 
+                className="inline-flex items-center text-xs font-bold uppercase tracking-wider text-[#111111] hover:text-[var(--color-accent)] transition-colors group"
+              >
+                View Connections Map
+                <ArrowUpRight className="ml-1 w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Link>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 gap-6">
-            {[
-              {
-                icon: <ShieldCheck className="w-5 h-5 text-[var(--color-accent)]" />,
-                title: "Our Mission",
-                desc: "To empower ambitious businesses with high-performance digital architectures and elite brand design to scale their global impact."
-              },
-              {
-                icon: <Zap className="w-5 h-5 text-[var(--color-accent)]" />,
-                title: "Our Vision",
-                desc: "To define the future of digital marketing through structural precision, extreme engineering, and luxury minimalist aesthetic."
-              },
-              {
-                icon: <UserCheck className="w-5 h-5 text-[var(--color-accent)]" />,
-                title: "Our Core Values",
-                desc: "Trust, continuous technical edge, strategic depth, and high-fidelity output on every single pixel and code block."
-              }
-            ].map((card, idx) => (
-              <div key={idx} className="bg-white border border-black/[0.04] p-6 rounded-2xl flex items-start space-x-4 shadow-[0_4px_20px_rgba(0,0,0,0.01)]">
-                <div className="w-10 h-10 rounded-xl bg-[#FAF8F5] flex items-center justify-center flex-shrink-0">
-                  {card.icon}
-                </div>
-                <div className="space-y-1">
-                  <h3 className="font-sans font-bold text-sm text-[#111111]">{card.title}</h3>
-                  <p className="text-xs text-[#6B7280] leading-relaxed">{card.desc}</p>
-                </div>
-              </div>
-            ))}
+          <div className="w-52 h-52 bg-white border border-black/[0.04] rounded-3xl flex items-center justify-center relative group overflow-hidden shadow-sm flex-shrink-0">
+            <div className="absolute inset-0 bg-radial from-[var(--color-accent)]/5 to-transparent pointer-events-none" />
+            <Image 
+              src="/global_reach_globe.png" 
+              alt="Global Client Operations Globe Graphic"
+              fill
+              sizes="208px"
+              className="object-cover transition-transform duration-[8s] group-hover:scale-105 ease-out select-none pointer-events-none"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Grid Features (About & Industries) */}
+      <section className="py-16 sm:py-24 px-4 bg-[#FAF8F5] relative border-t border-black/[0.02]">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+          
+          {/* About us tile */}
+          <div className="bg-white border border-black/[0.04] p-8 rounded-3xl space-y-6 flex flex-col justify-between hover:border-[var(--color-accent)]/30 transition-all duration-300">
+            <div className="space-y-3">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--color-accent)]">Our Identity</span>
+              <h3 className="text-xl sm:text-2xl font-bold text-[#111111]">Where strategy meets code.</h3>
+              <p className="text-xs text-[#6B7280] leading-relaxed font-medium">
+                DigiMark Pro operates at the intersection of luxury brand aesthetics, modern React engineering, and scalable growth pipelines. Learn about our mission and workflow.
+              </p>
+            </div>
+            <div className="pt-4">
+              <Link href="/about" className="inline-flex items-center text-xs font-bold uppercase tracking-wider text-[#111111] hover:text-[var(--color-accent)] transition-colors group">
+                Read About Us &nbsp; <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Industries tile */}
+          <div className="bg-white border border-black/[0.04] p-8 rounded-3xl space-y-6 flex flex-col justify-between hover:border-[var(--color-accent)]/30 transition-all duration-300">
+            <div className="space-y-3">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--color-accent)]">Target Sectors</span>
+              <h3 className="text-xl sm:text-2xl font-bold text-[#111111]">Niche Client Solutions</h3>
+              <p className="text-xs text-[#6B7280] leading-relaxed font-medium">
+                We craft specialized client capture systems and web platforms for Real Estate, SaaS, Health/Medical, FinTech, and luxury brands. Explore our custom industry structures.
+              </p>
+            </div>
+            <div className="pt-4">
+              <Link href="/industries" className="inline-flex items-center text-xs font-bold uppercase tracking-wider text-[#111111] hover:text-[var(--color-accent)] transition-colors group">
+                View Served Industries &nbsp; <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* Insights teaser */}
+      <section className="py-16 bg-white border-t border-black/[0.02]">
+        <div className="max-w-5xl mx-auto text-center space-y-6 px-4">
+          <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-accent)]">Insights & Strategy</span>
+          <h2 className="text-3xl font-bold text-[#111111]">Agency Thought Leadership</h2>
+          <p className="text-sm text-[#6B7280] leading-relaxed max-w-xl mx-auto font-medium">
+            Read our analysis of AI Search Optimization (GEO), conversion marketing tactics, and Next.js engineering page-speed performance indicators.
+          </p>
+          <div className="pt-2">
+            <Link href="/blog" className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-[#111111] text-[#FAF8F4] text-xs font-bold uppercase tracking-wider hover:bg-[#C9A66B] hover:text-[#111111] transition-all duration-300">
+              Read Our Blog &nbsp; <ArrowRight size={14} />
+            </Link>
           </div>
         </div>
       </section>
 
       {/* QR Code Section */}
-      <section className="py-16 sm:py-24 px-4 sm:px-6 md:px-12 bg-white relative">
-        <div className="max-w-5xl mx-auto bg-[#FAF8F5] border border-black/[0.04] rounded-3xl p-6 sm:p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8 sm:gap-12 shadow-[0_8px_40px_-10px_rgba(17,17,17,0.02)]">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 md:px-12 bg-[#FAF8F5] relative border-t border-black/[0.02]">
+        <div className="max-w-5xl mx-auto bg-white border border-black/[0.04] rounded-3xl p-6 sm:p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8 sm:gap-12 shadow-[0_8px_40px_-10px_rgba(17,17,17,0.02)]">
           <div className="space-y-6 max-w-lg text-center md:text-left">
             <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-accent)]">Digital Showcase</span>
             <h2 className="font-sans text-3xl md:text-4xl font-bold tracking-tight text-[#111111]">
@@ -428,8 +471,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-16 sm:py-24 px-4 sm:px-6 md:px-12 bg-[#FAF8F5] relative">
+      {/* Direct Contact Section with Lead Onboarding Form */}
+      <section id="contact" className="py-16 sm:py-24 px-4 sm:px-6 md:px-12 bg-white relative border-t border-black/[0.02]">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-16">
           <div className="space-y-8">
             <div className="space-y-4">
@@ -445,7 +488,7 @@ export default function Home() {
             {/* Direct Contact info */}
             <div className="space-y-6 pt-4 border-t border-black/[0.06]">
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl bg-white border border-black/[0.04] flex items-center justify-center flex-shrink-0 text-[#111111] shadow-sm">
+                <div className="w-10 h-10 rounded-xl bg-[#FAF8F5] border border-black/[0.04] flex items-center justify-center flex-shrink-0 text-[#111111] shadow-sm">
                   <Phone className="w-4 h-4 text-[var(--color-accent)]" />
                 </div>
                 <div>
@@ -457,7 +500,7 @@ export default function Home() {
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl bg-white border border-black/[0.04] flex items-center justify-center flex-shrink-0 text-[#111111] shadow-sm">
+                <div className="w-10 h-10 rounded-xl bg-[#FAF8F5] border border-black/[0.04] flex items-center justify-center flex-shrink-0 text-[#111111] shadow-sm">
                   <Mail className="w-4 h-4 text-[var(--color-accent)]" />
                 </div>
                 <div>
@@ -469,29 +512,15 @@ export default function Home() {
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl bg-white border border-black/[0.04] flex items-center justify-center flex-shrink-0 text-[#111111] shadow-sm">
-                  <svg className="w-4 h-4 text-[#25D366] fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12.004 2c-5.518 0-9.996 4.477-9.996 9.995 0 1.763.459 3.486 1.332 5.006L2 22l5.127-1.344a9.94 9.94 0 004.877 1.28c5.519 0 10-4.478 10-9.996 0-5.518-4.481-9.995-10-9.995zm4.846 14.195c-.272.766-1.353 1.39-1.859 1.488-.5.1-1.161.166-1.867-.061a9.924 9.924 0 01-3.774-2.189 11.233 11.233 0 01-2.585-3.324c-.453-.78-.716-1.583-.716-2.42 0-1.637.844-2.443 1.258-2.866.27-.276.536-.341.765-.341.229 0 .458.005.656.015.207.01.486-.079.76.577.283.676.969 2.365 1.054 2.535.085.17.142.368.028.594-.113.226-.17.368-.34.566-.17.198-.357.443-.51.594-.17.17-.348.354-.15.697.198.34.879 1.445 1.884 2.343.834.745 1.537.976 1.932 1.146.395.17.621.142.853-.113.23-.255.99-1.15 1.259-1.547.269-.396.538-.34.905-.203.368.137 2.336 1.103 2.733 1.302.396.198.66.297.755.462.095.165.095.957-.177 1.724z"/>
+                <div className="w-10 h-10 rounded-xl bg-[#FAF8F5] border border-black/[0.04] flex items-center justify-center flex-shrink-0 text-[#111111] shadow-sm">
+                  <svg className="w-4.5 h-4.5 text-[#25D366] fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12.004 2c-5.518 0-9.996 4.477-9.996 9.995 0 1.763.459 3.486 1.332 5.006L2 22l5.127-1.344a9.94 9.94 0 004.877 1.28c5.519 0 10-4.478 10-9.996 0-5.518-4.481-9.995-10-9.995zm4.846 14.195c-.272.766-1.353 1.39-1.859 1.488-.5.1-1.161.166-1.867-.061a9.924 9.924 0 0 1-3.774-2.189 11.233 11.233 0 0 1-2.585-3.324c-.453-.78-.716-1.583-.716-2.42 0-1.637.844-2.443 1.258-2.866.27-.276.536-.341.765-.341.229 0 .458.005.656.015.207.01.486-.079.76.577.283.676.969 2.365 1.054 2.535.085.17.142.368.028.594-.113.226-.17.368-.34.566-.17.198-.357.443-.51.594-.17.17-.348.354-.15.697.198.34.879 1.445 1.884 2.343.834.745 1.537.976 1.932 1.146.395.17.621.142.853-.113.23-.255.99-1.15 1.259-1.547.269-.396.538-.34.905-.203.368.137 2.336 1.103 2.733 1.302.396.198.66.297.755.462.095.165.095.957-.177 1.724z"/>
                   </svg>
                 </div>
                 <div>
                   <span className="block text-[10px] font-bold uppercase tracking-widest text-[#6B7280] mb-1">WhatsApp Quickchat</span>
-                  <a href="https://wa.me/919646900628" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-white border border-black/[0.04] text-xs font-bold uppercase tracking-wider text-[#111111] hover:bg-black/[0.02] transition-colors shadow-sm">
+                  <a href="https://wa.me/919646900628" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-[#FAF8F5] border border-black/[0.04] text-xs font-bold uppercase tracking-wider text-[#111111] hover:bg-black/[0.02] transition-colors shadow-sm">
                     Start Chat <ArrowRight className="ml-2 w-3.5 h-3.5" />
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl bg-white border border-black/[0.04] flex items-center justify-center flex-shrink-0 text-[#111111] shadow-sm">
-                  <svg className="w-4.5 h-4.5 fill-[#0077B5]" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/>
-                  </svg>
-                </div>
-                <div>
-                  <span className="block text-[10px] font-bold uppercase tracking-widest text-[#6B7280] mb-1">LinkedIn Authority</span>
-                  <a href="https://www.linkedin.com/company/digimark-pro25/posts/?feedView=all" target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-[#111111] hover:text-[var(--color-accent)] transition-colors flex items-center mt-1">
-                    Connect on LinkedIn <ArrowUpRight className="ml-1 w-3.5 h-3.5" />
                   </a>
                 </div>
               </div>

@@ -7,12 +7,13 @@ import Logo from "@/components/Logo";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
-  { label: "Home", href: "/#home" },
-  { label: "Services", href: "/#services" },
-  { label: "Process", href: "/#process" },
-  { label: "Work", href: "/#work" },
-  { label: "About", href: "/#about" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Home", href: "/" },
+  { label: "Services", href: "/services" },
+  { label: "Work", href: "/work" },
+  { label: "About", href: "/about" },
+  { label: "Global Reach", href: "/global" },
+  { label: "Industries", href: "/industries" },
+  { label: "Insights", href: "/blog" },
 ];
 
 export default function Navbar() {
@@ -49,7 +50,7 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 flex items-center justify-between">
-          <Link href="/#home" className="flex items-center -ml-1 sm:-ml-2 group transition-transform duration-300 hover:scale-[1.01]">
+          <Link href="/" className="flex items-center -ml-1 sm:-ml-2 group transition-transform duration-300 hover:scale-[1.01]">
             <Logo heightClassName="h-[50px] sm:h-[60px] md:h-[72px]" />
           </Link>
 
@@ -70,7 +71,7 @@ export default function Navbar() {
           {/* CTA Button */}
           <div className="hidden md:flex items-center">
             <Link
-              href="/#contact"
+              href="/contact"
               className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-[#111111] text-[#FAF8F4] text-xs font-bold uppercase tracking-wider hover:bg-[#C9A66B] hover:text-[#111111] transition-all duration-300 shadow-sm border border-transparent hover:border-black/5 group"
             >
               Book Free Consultation &rarr;
@@ -126,7 +127,7 @@ export default function Navbar() {
               className="mt-auto"
             >
               <Link
-                href="/#contact"
+                href="/contact"
                 onClick={handleLinkClick}
                 className="w-full inline-flex items-center justify-center py-4 rounded-xl bg-[#111111] text-[#FAF8F4] font-bold text-xs uppercase tracking-wider hover:bg-[#C9A66B] hover:text-[#111111] transition-all duration-300"
               >

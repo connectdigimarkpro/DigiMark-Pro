@@ -18,7 +18,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 relative z-10">
         {/* Brand Column */}
         <div className="md:col-span-2 space-y-6">
-          <Link href="/#home" className="inline-block transition-transform duration-300 hover:scale-[1.02]">
+          <Link href="/" className="inline-block transition-transform duration-300 hover:scale-[1.02]">
             <Logo heightClassName="h-20 md:h-24" />
           </Link>
           <p className="text-sm text-[#6B7280] max-w-sm leading-relaxed">
@@ -76,27 +76,27 @@ export default function Footer() {
           </h3>
           <ul className="space-y-4">
             <li>
-              <Link href="/#home" className="text-sm text-[#6B7280] hover:text-[#111111] transition-colors">
+              <Link href="/" className="text-sm text-[#6B7280] hover:text-[#111111] transition-colors">
                 Home
               </Link>
             </li>
             <li>
-              <Link href="/#work" className="text-sm text-[#6B7280] hover:text-[#111111] transition-colors">
+              <Link href="/work" className="text-sm text-[#6B7280] hover:text-[#111111] transition-colors">
                 Work Portfolio
               </Link>
             </li>
             <li>
-              <Link href="/#services" className="text-sm text-[#6B7280] hover:text-[#111111] transition-colors">
+              <Link href="/services" className="text-sm text-[#6B7280] hover:text-[#111111] transition-colors">
                 Services
               </Link>
             </li>
             <li>
-              <Link href="/#process" className="text-sm text-[#6B7280] hover:text-[#111111] transition-colors">
+              <Link href="/about" className="text-sm text-[#6B7280] hover:text-[#111111] transition-colors">
                 Our Process
               </Link>
             </li>
             <li>
-              <Link href="/#about" className="text-sm text-[#6B7280] hover:text-[#111111] transition-colors">
+              <Link href="/about" className="text-sm text-[#6B7280] hover:text-[#111111] transition-colors">
                 About Us
               </Link>
             </li>
@@ -115,7 +115,7 @@ export default function Footer() {
             <li className="text-sm text-[#6B7280]">Growth Solutions</li>
             <li>
               <Link
-                href="/#contact"
+                href="/contact"
                 className="text-sm text-[var(--color-accent)] hover:text-[#111111] transition-colors inline-flex items-center"
               >
                 Book Consultation
