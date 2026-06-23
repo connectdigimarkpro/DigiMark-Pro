@@ -1,19 +1,18 @@
 import Link from "next/link";
-import { 
-  ArrowRight, 
-  Sparkles, 
-  Code, 
-  TrendingUp, 
-  MessageSquare, 
-  Search, 
-  Cpu, 
+import {
+  ArrowRight,
+  Sparkles,
+  Code,
+  TrendingUp,
+  MessageSquare,
+  Search,
+  Cpu,
   ArrowUpRight,
   Globe,
   CheckCircle,
   ShieldCheck,
   Zap,
   UserCheck,
-  QrCode,
   Phone,
   Mail,
   Target,
@@ -32,6 +31,8 @@ import dynamic from "next/dynamic";
 const FeaturedWork = dynamic(() => import("@/components/FeaturedWork"));
 const TickerMarquee = dynamic(() => import("@/components/TickerMarquee"));
 const ContactForm = dynamic(() => import("@/components/ContactForm"));
+const BusinessResults = dynamic(() => import("@/components/BusinessResults"));
+const GlobalProjects = dynamic(() => import("@/components/GlobalProjects"));
 const Footer = dynamic(() => import("@/components/Footer"));
 
 // Services data
@@ -112,12 +113,15 @@ export default function Home() {
       {/* Hero Section */}
       <Hero />
 
+      {/* Global Projects Section */}
+      <GlobalProjects />
+
       {/* Selected Work Showcase */}
       <div className="relative">
         <FeaturedWork />
         <div className="bg-[#FAF8F4] pb-16 text-center border-b border-black/[0.02]">
-          <Link 
-            href="/work" 
+          <Link
+            href="/work"
             className="inline-flex items-center text-xs font-bold uppercase tracking-wider text-[#111111] hover:text-[var(--color-accent)] transition-colors group"
           >
             Explore Case Studies
@@ -146,9 +150,8 @@ export default function Home() {
               return (
                 <div
                   key={idx}
-                  className={`bg-white border border-black/[0.04] rounded-2xl p-6 sm:p-8 hover:border-[var(--color-accent)] transition-all duration-500 shadow-[0_4px_30px_rgba(0,0,0,0.01)] group relative overflow-hidden flex flex-col justify-between ${
-                    isLarge ? "md:col-span-2 md:p-10" : "col-span-1"
-                  }`}
+                  className={`bg-white border border-black/[0.04] rounded-2xl p-6 sm:p-8 hover:border-[var(--color-accent)] transition-all duration-500 shadow-[0_4px_30px_rgba(0,0,0,0.01)] group relative overflow-hidden flex flex-col justify-between ${isLarge ? "md:col-span-2 md:p-10" : "col-span-1"
+                    }`}
                 >
                   <div className="absolute inset-0 opacity-[0.02] group-hover:scale-105 transition-transform duration-700"
                     style={{
@@ -235,8 +238,8 @@ export default function Home() {
           </div>
 
           <div className="text-center pt-8">
-            <Link 
-              href="/services" 
+            <Link
+              href="/services"
               className="inline-flex items-center text-xs font-bold uppercase tracking-wider text-[#111111] hover:text-[var(--color-accent)] transition-colors group"
             >
               Explore Full Capabilities &nbsp; <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
@@ -347,45 +350,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Global Reach Preview Section with 3D Globe picture */}
-      <section className="py-16 sm:py-24 px-4 sm:px-6 md:px-12 bg-white border-t border-black/[0.02] relative">
-        <div className="max-w-5xl mx-auto bg-[#FAF8F5] border border-black/[0.04] rounded-3xl p-6 sm:p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 shadow-[0_8px_40px_-10px_rgba(17,17,17,0.02)]">
-          <div className="space-y-6 max-w-lg">
-            <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-accent)]">Global Presence</span>
-            <h2 className="font-sans text-3xl md:text-4xl font-bold tracking-tight text-[#111111]">
-              Open for International Clients
-            </h2>
-            <p className="text-sm text-[#6B7280] leading-relaxed font-medium">
-              We sync seamlessly across primary global timezones—operating in US (EST/PST), UK, EU, UAE, Singapore, and Australia. Explore our interactive delivery map.
-            </p>
-            <div className="pt-2">
-              <Link 
-                href="/global" 
-                className="inline-flex items-center text-xs font-bold uppercase tracking-wider text-[#111111] hover:text-[var(--color-accent)] transition-colors group"
-              >
-                View Connections Map
-                <ArrowUpRight className="ml-1 w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </Link>
-            </div>
-          </div>
 
-          <div className="w-52 h-52 bg-white border border-black/[0.04] rounded-3xl flex items-center justify-center relative group overflow-hidden shadow-sm flex-shrink-0">
-            <div className="absolute inset-0 bg-radial from-[var(--color-accent)]/5 to-transparent pointer-events-none" />
-            <Image 
-              src="/global_reach_globe.png" 
-              alt="Global Client Operations Globe Graphic"
-              fill
-              sizes="208px"
-              className="object-cover transition-transform duration-[8s] group-hover:scale-105 ease-out select-none pointer-events-none"
-            />
-          </div>
-        </div>
-      </section>
 
       {/* Grid Features (About & Industries) */}
       <section className="py-16 sm:py-24 px-4 bg-[#FAF8F5] relative border-t border-black/[0.02]">
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-          
+
           {/* About us tile */}
           <div className="bg-white border border-black/[0.04] p-8 rounded-3xl space-y-6 flex flex-col justify-between hover:border-[var(--color-accent)]/30 transition-all duration-300">
             <div className="space-y-3">
@@ -437,39 +407,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* QR Code Section */}
-      <section className="py-16 sm:py-24 px-4 sm:px-6 md:px-12 bg-[#FAF8F5] relative border-t border-black/[0.02]">
-        <div className="max-w-5xl mx-auto bg-white border border-black/[0.04] rounded-3xl p-6 sm:p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8 sm:gap-12 shadow-[0_8px_40px_-10px_rgba(17,17,17,0.02)]">
-          <div className="space-y-6 max-w-lg text-center md:text-left">
-            <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-accent)]">Digital Showcase</span>
-            <h2 className="font-sans text-3xl md:text-4xl font-bold tracking-tight text-[#111111]">
-              View Our Digital Portfolio
-            </h2>
-            <p className="text-sm text-[#6B7280] leading-relaxed">
-              Scan the custom QR code with your mobile device to experience our fluid digital portfolio directly on the go.
-            </p>
-            <div className="pt-2">
-              <a
-                href="https://digimarkpro.in/portfolio"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center text-xs font-bold uppercase tracking-wider text-[#111111] hover:text-[var(--color-accent)] transition-colors group"
-              >
-                https://digimarkpro.in/portfolio
-                <ArrowUpRight className="ml-1 w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </a>
-            </div>
-          </div>
-
-          {/* SVG QR Code */}
-          <div className="bg-white border border-black/[0.05] p-5 sm:p-6 rounded-2xl shadow-md relative group flex flex-col items-center">
-            <div className="w-48 h-48 flex items-center justify-center text-[#111111]">
-              <QrCode size={160} strokeWidth={1.2} className="group-hover:scale-[1.02] transition-transform duration-300" />
-            </div>
-            <span className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280] mt-3">Scan to open</span>
-          </div>
-        </div>
-      </section>
+      {/* Business Results Section */}
+      <BusinessResults />
 
       {/* Direct Contact Section with Lead Onboarding Form */}
       <section id="contact" className="py-16 sm:py-24 px-4 sm:px-6 md:px-12 bg-white relative border-t border-black/[0.02]">
@@ -514,7 +453,7 @@ export default function Home() {
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10 rounded-xl bg-[#FAF8F5] border border-black/[0.04] flex items-center justify-center flex-shrink-0 text-[#111111] shadow-sm">
                   <svg className="w-4.5 h-4.5 text-[#25D366] fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12.004 2c-5.518 0-9.996 4.477-9.996 9.995 0 1.763.459 3.486 1.332 5.006L2 22l5.127-1.344a9.94 9.94 0 004.877 1.28c5.519 0 10-4.478 10-9.996 0-5.518-4.481-9.995-10-9.995zm4.846 14.195c-.272.766-1.353 1.39-1.859 1.488-.5.1-1.161.166-1.867-.061a9.924 9.924 0 0 1-3.774-2.189 11.233 11.233 0 0 1-2.585-3.324c-.453-.78-.716-1.583-.716-2.42 0-1.637.844-2.443 1.258-2.866.27-.276.536-.341.765-.341.229 0 .458.005.656.015.207.01.486-.079.76.577.283.676.969 2.365 1.054 2.535.085.17.142.368.028.594-.113.226-.17.368-.34.566-.17.198-.357.443-.51.594-.17.17-.348.354-.15.697.198.34.879 1.445 1.884 2.343.834.745 1.537.976 1.932 1.146.395.17.621.142.853-.113.23-.255.99-1.15 1.259-1.547.269-.396.538-.34.905-.203.368.137 2.336 1.103 2.733 1.302.396.198.66.297.755.462.095.165.095.957-.177 1.724z"/>
+                    <path d="M12.004 2c-5.518 0-9.996 4.477-9.996 9.995 0 1.763.459 3.486 1.332 5.006L2 22l5.127-1.344a9.94 9.94 0 004.877 1.28c5.519 0 10-4.478 10-9.996 0-5.518-4.481-9.995-10-9.995zm4.846 14.195c-.272.766-1.353 1.39-1.859 1.488-.5.1-1.161.166-1.867-.061a9.924 9.924 0 0 1-3.774-2.189 11.233 11.233 0 0 1-2.585-3.324c-.453-.78-.716-1.583-.716-2.42 0-1.637.844-2.443 1.258-2.866.27-.276.536-.341.765-.341.229 0 .458.005.656.015.207.01.486-.079.76.577.283.676.969 2.365 1.054 2.535.085.17.142.368.028.594-.113.226-.17.368-.34.566-.17.198-.357.443-.51.594-.17.17-.348.354-.15.697.198.34.879 1.445 1.884 2.343.834.745 1.537.976 1.932 1.146.395.17.621.142.853-.113.23-.255.99-1.15 1.259-1.547.269-.396.538-.34.905-.203.368.137 2.336 1.103 2.733 1.302.396.198.66.297.755.462.095.165.095.957-.177 1.724z" />
                   </svg>
                 </div>
                 <div>
